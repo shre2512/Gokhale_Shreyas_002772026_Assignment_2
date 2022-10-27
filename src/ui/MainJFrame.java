@@ -4,6 +4,9 @@
  */
 package ui;
 
+import javax.swing.JOptionPane;
+import model.Admin;
+
 /**
  *
  * @author shrey
@@ -14,8 +17,16 @@ public class MainJFrame extends javax.swing.JFrame {
      * Creates new form MainJFrame
      */
     
+    private final Admin systemAdmin;
+    private final Admin communityAdmin;
+    private final Admin hospitalAdmin;
+    
     public MainJFrame() {
         initComponents();
+        buttonLogOut.setVisible(false);
+        this.systemAdmin = new Admin("System Admin", "SystemAdmin", "Male", "sysadmin@gmail.com", 24, "8573812345", "sysadmin", "admin");
+        this.communityAdmin = new Admin("Community Admin", "Communitydmin", "Female", "communityadmin@gmail.com", 23, "8573812346", "communityadmin", "admin");
+        this.hospitalAdmin = new Admin("Hospital Admin", "HospitalAdmin", "Male", "hospitaladmin@gmail.com", 26, "8573812347", "hospitaladmin", "admin"); 
     }
 
     /**
@@ -29,22 +40,22 @@ public class MainJFrame extends javax.swing.JFrame {
 
         splitPane = new javax.swing.JSplitPane();
         controlPanel = new javax.swing.JPanel();
-        HomeButton = new javax.swing.JButton();
+        buttonLogOut = new javax.swing.JButton();
         workArea = new javax.swing.JPanel();
         passWordLabel = new javax.swing.JLabel();
         userNameText = new javax.swing.JTextField();
         userNameLabel = new javax.swing.JLabel();
         loginAs = new javax.swing.JLabel();
         selectRole = new javax.swing.JComboBox<>();
-        loginButton = new javax.swing.JButton();
+        buttonLogIn = new javax.swing.JButton();
         passwordText = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        HomeButton.setText("Home");
-        HomeButton.addActionListener(new java.awt.event.ActionListener() {
+        buttonLogOut.setText("Log Out");
+        buttonLogOut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                HomeButtonActionPerformed(evt);
+                buttonLogOutActionPerformed(evt);
             }
         });
 
@@ -53,15 +64,15 @@ public class MainJFrame extends javax.swing.JFrame {
         controlPanelLayout.setHorizontalGroup(
             controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, controlPanelLayout.createSequentialGroup()
-                .addContainerGap(35, Short.MAX_VALUE)
-                .addComponent(HomeButton)
-                .addGap(34, 34, 34))
+                .addContainerGap(63, Short.MAX_VALUE)
+                .addComponent(buttonLogOut)
+                .addContainerGap())
         );
         controlPanelLayout.setVerticalGroup(
             controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(controlPanelLayout.createSequentialGroup()
                 .addGap(201, 201, 201)
-                .addComponent(HomeButton)
+                .addComponent(buttonLogOut)
                 .addContainerGap(276, Short.MAX_VALUE))
         );
 
@@ -79,14 +90,14 @@ public class MainJFrame extends javax.swing.JFrame {
 
         loginAs.setText("Role : ");
 
-        selectRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "System Admin", "City Admin", "Community Admin", "Hospital Admin" }));
+        selectRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "System Admin", "Community Admin", "Hospital Admin" }));
         selectRole.setMinimumSize(new java.awt.Dimension(72, 30));
         selectRole.setPreferredSize(new java.awt.Dimension(72, 30));
 
-        loginButton.setText("Log In");
-        loginButton.addActionListener(new java.awt.event.ActionListener() {
+        buttonLogIn.setText("Log In");
+        buttonLogIn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                loginButtonActionPerformed(evt);
+                buttonLogInActionPerformed(evt);
             }
         });
 
@@ -102,7 +113,7 @@ public class MainJFrame extends javax.swing.JFrame {
             workAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(workAreaLayout.createSequentialGroup()
                 .addGap(345, 345, 345)
-                .addComponent(loginButton)
+                .addComponent(buttonLogIn)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, workAreaLayout.createSequentialGroup()
                 .addContainerGap(220, Short.MAX_VALUE)
@@ -140,7 +151,7 @@ public class MainJFrame extends javax.swing.JFrame {
                     .addComponent(selectRole, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(loginAs, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(55, 55, 55)
-                .addComponent(loginButton)
+                .addComponent(buttonLogIn)
                 .addContainerGap(175, Short.MAX_VALUE))
         );
 
@@ -154,7 +165,7 @@ public class MainJFrame extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(splitPane, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
+            .addComponent(splitPane)
         );
 
         pack();
@@ -164,25 +175,47 @@ public class MainJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_userNameTextActionPerformed
 
-    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
+    private void buttonLogInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLogInActionPerformed
         // TODO add your handling code here:
-        if ("Community Admin".equals(selectRole.getSelectedItem().toString()))
+                
+        if (systemAdmin.getRole().equals(selectRole.getSelectedItem().toString()) && systemAdmin.getUserName().equals(userNameText.getText()) && systemAdmin.getPassWord().equals(passwordText.getText()))
         {
-            if("communityadmin".equals(userNameText.getText()) && "admin".equals(passwordText.getText()))
-            {
-                communityAdminJPanel communityAdmin = new communityAdminJPanel();
-                splitPane.setRightComponent(communityAdmin);
-            } 
+            JOptionPane.showMessageDialog(this, "Logged In As System Admin");
+            systemAdminJPanel sysAdmin = new systemAdminJPanel();
+            splitPane.setRightComponent(sysAdmin);
+            buttonLogOut.setVisible(true);
         }
-    }//GEN-LAST:event_loginButtonActionPerformed
+        
+        else if (communityAdmin.getRole().equals(selectRole.getSelectedItem().toString()) && communityAdmin.getUserName().equals(userNameText.getText()) && communityAdmin.getPassWord().equals(passwordText.getText()))
+        {
+            JOptionPane.showMessageDialog(this, "Logged In As Community Admin");
+            communityAdminJPanel comAdmin = new communityAdminJPanel();
+            splitPane.setRightComponent(comAdmin);
+            buttonLogOut.setVisible(true);
+        }
+                
+        else if (hospitalAdmin.getRole().equals(selectRole.getSelectedItem().toString()) && hospitalAdmin.getUserName().equals(userNameText.getText()) && hospitalAdmin.getPassWord().equals(passwordText.getText()))
+        {
+            JOptionPane.showMessageDialog(this, "Logged In As Hospital Admin");
+            hospitalAdminJPanel hosAdmin = new hospitalAdminJPanel();
+            splitPane.setRightComponent(hosAdmin); 
+            buttonLogOut.setVisible(true);
+        }
+        
+        else
+        {
+            JOptionPane.showMessageDialog(this, "Invalid Credentials");
+        }
+    }//GEN-LAST:event_buttonLogInActionPerformed
 
-    private void HomeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HomeButtonActionPerformed
+    private void buttonLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLogOutActionPerformed
         // TODO add your handling code here:
         splitPane.setRightComponent(workArea);
+        buttonLogOut.setVisible(false);
         userNameText.setText("");
         passwordText.setText("");
         
-    }//GEN-LAST:event_HomeButtonActionPerformed
+    }//GEN-LAST:event_buttonLogOutActionPerformed
 
     private void passwordTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordTextActionPerformed
         // TODO add your handling code here:
@@ -224,10 +257,10 @@ public class MainJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton HomeButton;
+    private javax.swing.JButton buttonLogIn;
+    private javax.swing.JButton buttonLogOut;
     private javax.swing.JPanel controlPanel;
     private javax.swing.JLabel loginAs;
-    private javax.swing.JButton loginButton;
     private javax.swing.JLabel passWordLabel;
     private javax.swing.JPasswordField passwordText;
     private javax.swing.JComboBox<String> selectRole;

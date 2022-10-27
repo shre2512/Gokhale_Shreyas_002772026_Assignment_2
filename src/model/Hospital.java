@@ -13,7 +13,6 @@ import java.util.ArrayList;
 public class Hospital {
     
     private String hospitalName;
-    private int bedCapacity;
     private String hospitalZip;
     private String hospitalCommunity;
     private String hospitalCity;
@@ -57,14 +56,6 @@ public class Hospital {
 
     public void setHospitalDoctors(ArrayList<Doctor> hospitalDoctors) {
         this.hospitalDoctors = hospitalDoctors;
-    }
-    
-    public int getBedCapacity() {
-        return bedCapacity;
-    }
-
-    public void setBedCapacity(int bedCapacity) {
-        this.bedCapacity = bedCapacity;
     }
     
 }
