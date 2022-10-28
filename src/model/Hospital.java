@@ -12,12 +12,24 @@ import java.util.ArrayList;
  */
 public class Hospital {
     
+    private static int count = 0;
+    private final int hospitalId;
     private String hospitalName;
     private String hospitalZip;
     private String hospitalCommunity;
     private String hospitalCity;
-    private ArrayList<Doctor> hospitalDoctors;
+    private final ArrayList<Doctor> hospitalDoctors;
+    
+    public Hospital()
+    {
+        this.hospitalId = ++count;
+        this.hospitalDoctors = new ArrayList<>();
+    }
 
+    public int getHospitalId() {
+        return hospitalId;
+    }
+    
     public String getHospitalName() {
         return hospitalName;
     }
@@ -52,10 +64,6 @@ public class Hospital {
 
     public ArrayList<Doctor> getHospitalDoctors() {
         return hospitalDoctors;
-    }
-
-    public void setHospitalDoctors(ArrayList<Doctor> hospitalDoctors) {
-        this.hospitalDoctors = hospitalDoctors;
     }
     
 }

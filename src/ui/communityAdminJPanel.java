@@ -106,7 +106,7 @@ public class communityAdminJPanel extends javax.swing.JPanel {
         );
         hospitalPanelLayout.setVerticalGroup(
             hospitalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(hospitalSplitPane, javax.swing.GroupLayout.DEFAULT_SIZE, 464, Short.MAX_VALUE)
+            .addComponent(hospitalSplitPane)
         );
 
         tabbedPane.addTab("Manage Hospitals", hospitalPanel);
@@ -147,7 +147,7 @@ public class communityAdminJPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(tabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 495, Short.MAX_VALUE))
+                .addComponent(tabbedPane))
         );
     }// </editor-fold>//GEN-END:initComponents
 

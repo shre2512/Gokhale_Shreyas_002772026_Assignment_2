@@ -88,7 +88,7 @@
                   <Component id="labelBedCapacity" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                   <Component id="txtBedCapacity" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="38" max="32767" attributes="0"/>
+              <EmptySpace pref="97" max="32767" attributes="0"/>
               <Component id="SubmitHospital" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
           </Group>

@@ -11,15 +11,21 @@ import java.util.ArrayList;
  *
  * @author shrey
  */
-public class Encounters {
+public class Encounter {
     
     private String hospitalName;
-    private int doctorID;
+    private String doctorName;
     private int encounterDay;
     private int encounterMonth;
     private int encounterYear;
-    private ArrayList<VitalSigns> encounterVitalSigns;
-
+    private String encounterDate;
+    private final ArrayList<VitalSigns> encounterVitalSigns;
+    
+    public Encounter()
+    {
+        this.encounterVitalSigns = new ArrayList<>();
+    }
+    
     public String getHospitalName() {
         return hospitalName;
     }
@@ -28,13 +34,14 @@ public class Encounters {
         this.hospitalName = hospitalName;
     }
 
-    public int getDoctorID() {
-        return doctorID;
+    public String getDoctorName() {
+        return doctorName;
     }
 
-    public void setDoctorID(int doctorID) {
-        this.doctorID = doctorID;
+    public void setDoctorName(String doctorName) {
+        this.doctorName = doctorName;
     }
+    
 
     public int getEncounterDay() {
         return encounterDay;
@@ -64,12 +71,11 @@ public class Encounters {
         return encounterVitalSigns;
     }
 
-    public void setEncounterVitalSigns(ArrayList<VitalSigns> encounterVitalSigns) {
-        this.encounterVitalSigns = encounterVitalSigns;
+    public String getEncounterDate() {
+        return encounterDate;
     }
-    
-    public String encounterDate()
-    {
-        return LocalDate.of(encounterYear, encounterMonth, encounterDay).toString();
+
+    public void setEncounterDate() {
+        this.encounterDate = LocalDate.of(encounterYear, encounterMonth, encounterDay).toString();
     }
 }

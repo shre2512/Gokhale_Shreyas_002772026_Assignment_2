@@ -10,51 +10,61 @@ package model;
  */
 public class Person {
     
-    private final String name;
-    private final String gender;
-    private final String emailId;
-    private final int age;
-    private final String phoneNumber;
-    private final String userName;
-    private final String passWord;
+    private static int count = 0;
+    private final int personId;
     
-    public Person(String name, String gender, String emailId, int age, String phoneNumber, String userName, String passWord)
+    private String name;
+    private String gender;
+    private String emailId;
+    private int age;
+    private String phoneNumber;
+    
+    public Person()
     {
-        this.name = name;
-        this.gender = gender;
-        this.emailId = emailId;
-        this.age = age;
-        this.phoneNumber = phoneNumber;
-        this.userName = userName;
-        this.passWord = passWord;
+        this.personId = ++count;
     }
 
     public String getName() {
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getGender() {
         return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     public String getEmailId() {
         return emailId;
     }
 
+    public void setEmailId(String emailId) {
+        this.emailId = emailId;
+    }
+
     public int getAge() {
         return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 
     public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public String getUserName() {
-        return userName;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
-    public String getPassWord() {
-        return passWord;
+    public int getPersonId() {
+        return personId;
     }
-    
 }

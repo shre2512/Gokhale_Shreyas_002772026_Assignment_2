@@ -8,21 +8,29 @@ package model;
  *
  * @author shrey
  */
-public class Admin extends Person{
+public class Admin{
     
-    private String role;
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
+    private final String adminRole;
+    private final String adminUserName;
+    private final String adminPassWord;
     
-    public Admin(String role, String name, String gender, String emailId, int age, String phoneNumber, String userName, String passWord)
+    public Admin(String adminRole, String adminUserName, String adminPassWord)
     {
-        super(name, gender, emailId, age, phoneNumber, userName, passWord);
-        this.role = role;
+        this.adminRole = adminRole;
+        this.adminUserName = adminUserName;
+        this.adminPassWord = adminPassWord;
     }
+
+    public String getAdminRole() {
+        return adminRole;
+    }
+
+    public String getAdminUserName() {
+        return adminUserName;
+    }
+
+    public String getAdminPassWord() {
+        return adminPassWord;
+    }
+    
 }

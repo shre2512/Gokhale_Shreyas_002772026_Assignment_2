@@ -6,6 +6,12 @@ package ui;
 
 import javax.swing.JOptionPane;
 import model.Admin;
+import model.CityDirectory;
+import model.EncounterDirectory;
+import model.HospitalDirectory;
+import model.HouseDirectory;
+import model.PatientDirectory;
+import model.PersonDirectory;
 
 /**
  *
@@ -20,13 +26,25 @@ public class MainJFrame extends javax.swing.JFrame {
     private final Admin systemAdmin;
     private final Admin communityAdmin;
     private final Admin hospitalAdmin;
+    EncounterDirectory encounterDirectory;
+    HospitalDirectory hospitalDirectory;
+    HouseDirectory houseDirectory;
+    PatientDirectory patientDirectory;
+    PersonDirectory personDirectory;
+    CityDirectory cityDirectory;
     
     public MainJFrame() {
         initComponents();
         buttonLogOut.setVisible(false);
-        this.systemAdmin = new Admin("System Admin", "SystemAdmin", "Male", "sysadmin@gmail.com", 24, "8573812345", "sysadmin", "admin");
-        this.communityAdmin = new Admin("Community Admin", "Communitydmin", "Female", "communityadmin@gmail.com", 23, "8573812346", "communityadmin", "admin");
-        this.hospitalAdmin = new Admin("Hospital Admin", "HospitalAdmin", "Male", "hospitaladmin@gmail.com", 26, "8573812347", "hospitaladmin", "admin"); 
+        this.systemAdmin = new Admin("System Admin", "systemadmin", "admin");
+        this.communityAdmin = new Admin("Community Admin", "communityadmin", "admin");
+        this.hospitalAdmin = new Admin("Hospital Admin", "hospitaladmin", "admin");
+        encounterDirectory = new EncounterDirectory();
+        hospitalDirectory = new HospitalDirectory();
+        houseDirectory = new HouseDirectory();
+        patientDirectory = new PatientDirectory();
+        personDirectory = new PersonDirectory();
+        cityDirectory = new CityDirectory();
     }
 
     /**
@@ -90,7 +108,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
         loginAs.setText("Role : ");
 
-        selectRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "System Admin", "Community Admin", "Hospital Admin" }));
+        selectRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "System Admin", "Community Admin", "Hospital Admin", "Patient", "Doctor" }));
         selectRole.setMinimumSize(new java.awt.Dimension(72, 30));
         selectRole.setPreferredSize(new java.awt.Dimension(72, 30));
 
@@ -178,15 +196,15 @@ public class MainJFrame extends javax.swing.JFrame {
     private void buttonLogInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLogInActionPerformed
         // TODO add your handling code here:
                 
-        if (systemAdmin.getRole().equals(selectRole.getSelectedItem().toString()) && systemAdmin.getUserName().equals(userNameText.getText()) && systemAdmin.getPassWord().equals(passwordText.getText()))
+        if (systemAdmin.getAdminRole().equals(selectRole.getSelectedItem().toString()) && systemAdmin.getAdminUserName().equals(userNameText.getText()) && systemAdmin.getAdminPassWord().equals(passwordText.getText()))
         {
             JOptionPane.showMessageDialog(this, "Logged In As System Admin");
-            systemAdminJPanel sysAdmin = new systemAdminJPanel();
+            systemAdminJPanel sysAdmin = new systemAdminJPanel(cityDirectory);
             splitPane.setRightComponent(sysAdmin);
             buttonLogOut.setVisible(true);
         }
         
-        else if (communityAdmin.getRole().equals(selectRole.getSelectedItem().toString()) && communityAdmin.getUserName().equals(userNameText.getText()) && communityAdmin.getPassWord().equals(passwordText.getText()))
+        else if (communityAdmin.getAdminRole().equals(selectRole.getSelectedItem().toString()) && communityAdmin.getAdminUserName().equals(userNameText.getText()) && communityAdmin.getAdminPassWord().equals(passwordText.getText()))
         {
             JOptionPane.showMessageDialog(this, "Logged In As Community Admin");
             communityAdminJPanel comAdmin = new communityAdminJPanel();
@@ -194,7 +212,7 @@ public class MainJFrame extends javax.swing.JFrame {
             buttonLogOut.setVisible(true);
         }
                 
-        else if (hospitalAdmin.getRole().equals(selectRole.getSelectedItem().toString()) && hospitalAdmin.getUserName().equals(userNameText.getText()) && hospitalAdmin.getPassWord().equals(passwordText.getText()))
+        else if (hospitalAdmin.getAdminRole().equals(selectRole.getSelectedItem().toString()) && hospitalAdmin.getAdminUserName().equals(userNameText.getText()) && hospitalAdmin.getAdminPassWord().equals(passwordText.getText()))
         {
             JOptionPane.showMessageDialog(this, "Logged In As Hospital Admin");
             hospitalAdminJPanel hosAdmin = new hospitalAdminJPanel();

@@ -10,34 +10,43 @@ import java.util.ArrayList;
  *
  * @author shrey
  */
-public class Patient extends Person {
+public class Patient {
     
-    private ArrayList<Encounters> patientEncounters;
-    private int patientHeight;
     private int patientWeight;
+    private String patientBloodGroup;
+    private String name;
+    private String gender;
+    private String emailId;
+    private int age;
+    private String phoneNumber;
     
-    public Patient(int patientHeight, int patientWeight, String name, String gender, String emailId, int age, String phoneNumber, String userName, String passWord)
+    private final int patientId;
+    private final ArrayList<Encounter> patientEncounters;
+    private final String patientUserName;
+    private final String patientPassWord;
+    
+    public Patient(int patientId, String patientUserName, String patientPassWord)
     {
-        super(name, gender, emailId, age, phoneNumber, userName, passWord);
         this.patientEncounters = new ArrayList<>();
-        this.patientHeight = patientHeight;
-        this.patientWeight = patientWeight;
+        this.patientId = patientId;
+        this.patientUserName = patientUserName;
+        this.patientPassWord = patientPassWord;
     }
 
-    public ArrayList<Encounters> getPatientEncounters() {
+    public int getPatientId() {
+        return patientId;
+    }
+
+    public ArrayList<Encounter> getPatientEncounters() {
         return patientEncounters;
     }
 
-    public void setPatientEncounters(ArrayList<Encounters> patientEncounters) {
-        this.patientEncounters = patientEncounters;
+    public String getPatientUserName() {
+        return patientUserName;
     }
 
-    public int getPatientHeight() {
-        return patientHeight;
-    }
-
-    public void setPatientHeight(int patientHeight) {
-        this.patientHeight = patientHeight;
+    public String getPatientPassWord() {
+        return patientPassWord;
     }
 
     public int getPatientWeight() {
@@ -47,5 +56,52 @@ public class Patient extends Person {
     public void setPatientWeight(int patientWeight) {
         this.patientWeight = patientWeight;
     }
-    
+
+    public String getPatientBloodGroup() {
+        return patientBloodGroup;
+    }
+
+    public void setPatientBloodGroup(String patientBloodGroup) {
+        this.patientBloodGroup = patientBloodGroup;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getEmailId() {
+        return emailId;
+    }
+
+    public void setEmailId(String emailId) {
+        this.emailId = emailId;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
 }

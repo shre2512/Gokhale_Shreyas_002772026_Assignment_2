@@ -10,4 +10,81 @@ package model;
  */
 public class Doctor {
     
+    private String doctorSpecialization;
+    private String name;
+    private String gender;
+    private String emailId;
+    private int age;
+    private String phoneNumber;
+    private final int doctorId;
+    private final String doctorUserName;
+    private final String doctorPassWord;
+    
+    public Doctor(int doctorId, String doctorUserName, String doctorPassWord)
+    {
+        this.doctorId = doctorId;
+        this.doctorUserName = doctorUserName;
+        this.doctorPassWord = doctorPassWord;
+    }
+
+    public int getDoctorId() {
+        return doctorId;
+    }
+
+    public String getDoctorUserName() {
+        return doctorUserName;
+    }
+
+    public String getDoctorPassWord() {
+        return doctorPassWord;
+    }
+
+    public String getDoctorSpecialization() {
+        return doctorSpecialization;
+    }
+
+    public void setDoctorSpecialization(String doctorSpecialization) {
+        this.doctorSpecialization = doctorSpecialization;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getEmailId() {
+        return emailId;
+    }
+
+    public void setEmailId(String emailId) {
+        this.emailId = emailId;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
 }
