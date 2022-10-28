@@ -13,6 +13,7 @@ import java.util.ArrayList;
 public class Community {
     
     private String communityName;
+    private String cityName;
     private final ArrayList<House> communityHouses;
     private final ArrayList<Hospital> communityHospitals;
     
@@ -36,5 +37,20 @@ public class Community {
 
     public ArrayList<Hospital> getCommunityHospitals() {
         return communityHospitals;
-    }    
+    }
+
+    public String getCityName() {
+        return cityName;
+    }
+
+    public void setCityName(String cityName) {
+        this.cityName = cityName;
+    }
+    
+    @Override
+    public String toString()
+    {
+        return this.cityName;
+    }
+ 
 }

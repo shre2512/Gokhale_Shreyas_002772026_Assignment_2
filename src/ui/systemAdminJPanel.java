@@ -11,6 +11,8 @@ import java.net.URL;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import model.CityDirectory;
+import model.CommunityDirectory;
+import model.HospitalDirectory;
 
 /**
  *
@@ -23,14 +25,18 @@ public class systemAdminJPanel extends javax.swing.JPanel {
      * Creates new form CommunityAdmin
      */
     CityDirectory cityDirectory;
+    CommunityDirectory communityDirectory;
+    HospitalDirectory hospitalDirectory;
     
-    public systemAdminJPanel(CityDirectory cityDirectory) throws IOException {
+    public systemAdminJPanel(CityDirectory cityDirectory, CommunityDirectory communityDirectory, HospitalDirectory hospitalDirectory) throws IOException {
         initComponents();
         URL urlInput = new URL("https://i.postimg.cc/vmq8jXq9/city.jpg");
         BufferedImage image = ImageIO.read(urlInput);
         Image resultingImage = image.getScaledInstance(807, 388, Image.SCALE_DEFAULT);
         jLabel1.setIcon(new ImageIcon(resultingImage));
         this.cityDirectory = cityDirectory;
+        this.communityDirectory = communityDirectory;
+        this.hospitalDirectory = hospitalDirectory;
     }
 
     /**
@@ -654,10 +660,14 @@ public class systemAdminJPanel extends javax.swing.JPanel {
 
     private void btnViewHospitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewHospitalActionPerformed
         // TODO add your handling code here:
+        viewHospitalJPanel viewHospital = new viewHospitalJPanel(hospitalDirectory);
+        hospitalSplitPane.setRightComponent(viewHospital);
     }//GEN-LAST:event_btnViewHospitalActionPerformed
 
     private void btnCreateHospitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateHospitalActionPerformed
         // TODO add your handling code here:
+        createHospitalJPanel createHospital = new createHospitalJPanel(cityDirectory, communityDirectory, hospitalDirectory);
+        hospitalSplitPane.setRightComponent(createHospital);     
     }//GEN-LAST:event_btnCreateHospitalActionPerformed
 
     private void btnDeleteCommunityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteCommunityActionPerformed
@@ -666,14 +676,20 @@ public class systemAdminJPanel extends javax.swing.JPanel {
 
     private void btnViewCommunityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewCommunityActionPerformed
         // TODO add your handling code here:
+        viewCommunityJPanel viewCommunity = new viewCommunityJPanel(communityDirectory);
+        communitySplitPane.setRightComponent(viewCommunity);
     }//GEN-LAST:event_btnViewCommunityActionPerformed
 
     private void btnCreateCommunityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateCommunityActionPerformed
         // TODO add your handling code here:
+        createCommunityJPanel createCommunity = new createCommunityJPanel(cityDirectory, communityDirectory);
+        communitySplitPane.setRightComponent(createCommunity);
     }//GEN-LAST:event_btnCreateCommunityActionPerformed
 
     private void btnViewCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewCityActionPerformed
         // TODO add your handling code here:
+        viewCityJPanel viewCity = new viewCityJPanel(cityDirectory);
+        citySplitPane.setRightComponent(viewCity);
     }//GEN-LAST:event_btnViewCityActionPerformed
 
     private void btnCreateCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateCityActionPerformed

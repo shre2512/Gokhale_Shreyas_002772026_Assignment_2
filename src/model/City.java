@@ -40,4 +40,10 @@ public class City {
     public ArrayList<Community> getCityCommunities() {
         return cityCommunities;
     }
+    
+    @Override
+    public String toString()
+    {
+        return this.cityName;
+    }
 }

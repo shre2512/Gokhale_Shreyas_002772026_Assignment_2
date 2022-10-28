@@ -39,6 +39,7 @@ public class createCityJPanel extends javax.swing.JPanel {
         lblCityName = new javax.swing.JLabel();
         lblStateName = new javax.swing.JLabel();
         txtStateName = new javax.swing.JTextField();
+        lblCreateCity = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(0, 255, 255));
 
@@ -69,14 +70,23 @@ public class createCityJPanel extends javax.swing.JPanel {
             }
         });
 
+        lblCreateCity.setBackground(new java.awt.Color(255, 255, 255));
+        lblCreateCity.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblCreateCity.setForeground(new java.awt.Color(255, 0, 0));
+        lblCreateCity.setText("                                                                                          Create City");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblCreateCity, javax.swing.GroupLayout.DEFAULT_SIZE, 1038, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(313, 313, 313)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(298, 298, 298)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblStateName)
                             .addComponent(lblCityName))
@@ -85,14 +95,16 @@ public class createCityJPanel extends javax.swing.JPanel {
                             .addComponent(txtCityName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtStateName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(417, 417, 417)
+                        .addGap(119, 119, 119)
                         .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(352, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(75, 75, 75)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(lblCreateCity, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(83, 83, 83)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCityName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtCityName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -102,7 +114,7 @@ public class createCityJPanel extends javax.swing.JPanel {
                     .addComponent(txtStateName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(59, 59, 59)
                 .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(233, Short.MAX_VALUE))
+                .addGap(167, 167, 167))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -110,7 +122,7 @@ public class createCityJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         City newCity = cityDirectory.addNewCity();
         newCity.setCityName(txtCityName.getText());
-        System.out.print(cityDirectory.getCityDirectory().get(0).getCityName());
+        newCity.setStateName(txtStateName.getText());
         JOptionPane.showMessageDialog(this, "City Added!");
         txtCityName.setText("");
         txtStateName.setText("");
@@ -127,6 +139,7 @@ public class createCityJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel lblCityName;
+    private javax.swing.JLabel lblCreateCity;
     private javax.swing.JLabel lblStateName;
     private javax.swing.JButton submitButton;
     private javax.swing.JTextField txtCityName;

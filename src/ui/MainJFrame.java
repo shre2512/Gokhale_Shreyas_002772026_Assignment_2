@@ -4,9 +4,13 @@
  */
 package ui;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import model.Admin;
 import model.CityDirectory;
+import model.CommunityDirectory;
 import model.EncounterDirectory;
 import model.HospitalDirectory;
 import model.HouseDirectory;
@@ -32,6 +36,7 @@ public class MainJFrame extends javax.swing.JFrame {
     PatientDirectory patientDirectory;
     PersonDirectory personDirectory;
     CityDirectory cityDirectory;
+    CommunityDirectory communityDirectory;
     
     public MainJFrame() {
         initComponents();
@@ -44,6 +49,7 @@ public class MainJFrame extends javax.swing.JFrame {
         houseDirectory = new HouseDirectory();
         patientDirectory = new PatientDirectory();
         personDirectory = new PersonDirectory();
+        communityDirectory = new CommunityDirectory();
         cityDirectory = new CityDirectory();
     }
 
@@ -198,20 +204,28 @@ public class MainJFrame extends javax.swing.JFrame {
                 
         if (systemAdmin.getAdminRole().equals(selectRole.getSelectedItem().toString()) && systemAdmin.getAdminUserName().equals(userNameText.getText()) && systemAdmin.getAdminPassWord().equals(passwordText.getText()))
         {
-            JOptionPane.showMessageDialog(this, "Logged In As System Admin");
-            systemAdminJPanel sysAdmin = new systemAdminJPanel(cityDirectory);
-            splitPane.setRightComponent(sysAdmin);
-            buttonLogOut.setVisible(true);
+            try {
+                JOptionPane.showMessageDialog(this, "Logged In As System Admin");
+                systemAdminJPanel sysAdmin = new systemAdminJPanel(cityDirectory, communityDirectory, hospitalDirectory);
+                splitPane.setRightComponent(sysAdmin);
+                buttonLogOut.setVisible(true);
+            } catch (IOException ex) {
+                Logger.getLogger(MainJFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         
         else if (communityAdmin.getAdminRole().equals(selectRole.getSelectedItem().toString()) && communityAdmin.getAdminUserName().equals(userNameText.getText()) && communityAdmin.getAdminPassWord().equals(passwordText.getText()))
         {
-            JOptionPane.showMessageDialog(this, "Logged In As Community Admin");
-            communityAdminJPanel comAdmin = new communityAdminJPanel();
-            splitPane.setRightComponent(comAdmin);
-            buttonLogOut.setVisible(true);
+            try {
+                JOptionPane.showMessageDialog(this, "Logged In As Community Admin");
+                communityAdminJPanel comAdmin = new communityAdminJPanel();
+                splitPane.setRightComponent(comAdmin);
+                buttonLogOut.setVisible(true);
+            } catch (IOException ex) {
+                Logger.getLogger(MainJFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
-                
+        /*     
         else if (hospitalAdmin.getAdminRole().equals(selectRole.getSelectedItem().toString()) && hospitalAdmin.getAdminUserName().equals(userNameText.getText()) && hospitalAdmin.getAdminPassWord().equals(passwordText.getText()))
         {
             JOptionPane.showMessageDialog(this, "Logged In As Hospital Admin");
@@ -219,7 +233,7 @@ public class MainJFrame extends javax.swing.JFrame {
             splitPane.setRightComponent(hosAdmin); 
             buttonLogOut.setVisible(true);
         }
-        
+        */
         else
         {
             JOptionPane.showMessageDialog(this, "Invalid Credentials");

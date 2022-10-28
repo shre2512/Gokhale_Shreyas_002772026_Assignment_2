@@ -66,4 +66,10 @@ public class Hospital {
         return hospitalDoctors;
     }
     
+    @Override
+    public String toString()
+    {
+        return this.hospitalName;
+    }
+    
 }
