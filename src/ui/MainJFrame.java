@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 import model.Admin;
 import model.CityDirectory;
 import model.CommunityDirectory;
+import model.DoctorDirectory;
 import model.EncounterDirectory;
 import model.HospitalDirectory;
 import model.HouseDirectory;
@@ -37,6 +38,7 @@ public class MainJFrame extends javax.swing.JFrame {
     PersonDirectory personDirectory;
     CityDirectory cityDirectory;
     CommunityDirectory communityDirectory;
+    DoctorDirectory doctorDirectory;
     
     public MainJFrame() {
         initComponents();
@@ -51,6 +53,7 @@ public class MainJFrame extends javax.swing.JFrame {
         personDirectory = new PersonDirectory();
         communityDirectory = new CommunityDirectory();
         cityDirectory = new CityDirectory();
+        doctorDirectory = new DoctorDirectory();
     }
 
     /**
@@ -97,7 +100,7 @@ public class MainJFrame extends javax.swing.JFrame {
             .addGroup(controlPanelLayout.createSequentialGroup()
                 .addGap(201, 201, 201)
                 .addComponent(buttonLogOut)
-                .addContainerGap(276, Short.MAX_VALUE))
+                .addContainerGap(326, Short.MAX_VALUE))
         );
 
         splitPane.setLeftComponent(controlPanel);
@@ -176,7 +179,7 @@ public class MainJFrame extends javax.swing.JFrame {
                     .addComponent(loginAs, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(55, 55, 55)
                 .addComponent(buttonLogIn)
-                .addContainerGap(175, Short.MAX_VALUE))
+                .addContainerGap(225, Short.MAX_VALUE))
         );
 
         splitPane.setRightComponent(workArea);
@@ -189,7 +192,7 @@ public class MainJFrame extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(splitPane)
+            .addComponent(splitPane, javax.swing.GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE)
         );
 
         pack();
@@ -206,7 +209,7 @@ public class MainJFrame extends javax.swing.JFrame {
         {
             try {
                 JOptionPane.showMessageDialog(this, "Logged In As System Admin");
-                systemAdminJPanel sysAdmin = new systemAdminJPanel(cityDirectory, communityDirectory, hospitalDirectory);
+                systemAdminJPanel sysAdmin = new systemAdminJPanel(cityDirectory, communityDirectory, hospitalDirectory, houseDirectory, patientDirectory, personDirectory, doctorDirectory);
                 splitPane.setRightComponent(sysAdmin);
                 buttonLogOut.setVisible(true);
             } catch (IOException ex) {

@@ -4,6 +4,8 @@
  */
 package model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author shrey
@@ -13,8 +15,17 @@ public class House {
     private String streetAddress;
     private String communityName;
     private String cityName;
-    private String zipCode;
+    private final ArrayList<Person> residents;
+    
+    public House()
+    {
+        this.residents = new ArrayList<>();
+    }
 
+    public ArrayList<Person> getResidents() {
+        return residents;
+    }
+    
     public String getStreetAddress() {
         return streetAddress;
     }
@@ -38,13 +49,10 @@ public class House {
     public void setCityName(String cityName) {
         this.cityName = cityName;
     }
-
-    public String getZipCode() {
-        return zipCode;
-    }
-
-    public void setZipCode(String zipCode) {
-        this.zipCode = zipCode;
-    }
     
+    @Override
+    public String toString()
+    {
+        return this.streetAddress;
+    }
 }

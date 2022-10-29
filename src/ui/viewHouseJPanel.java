@@ -5,43 +5,40 @@
 package ui;
 
 import javax.swing.table.DefaultTableModel;
-import model.Hospital;
-import model.HospitalDirectory;
+import model.House;
+import model.HouseDirectory;
 
 /**
  *
  * @author shrey
  */
-public class viewHospitalJPanel extends javax.swing.JPanel {
+public class viewHouseJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form viewHospitalJPanel
+     * Creates new form viewHouseJPanel
      */
-    HospitalDirectory hospitalDirectory;
+    HouseDirectory houseDirectory;
     
-    public viewHospitalJPanel(HospitalDirectory hospitalDirectory) {
+    public viewHouseJPanel(HouseDirectory houseDirectory) {
         initComponents();
-        this.hospitalDirectory = hospitalDirectory;
+        this.houseDirectory = houseDirectory;
         populateTable();
     }
     
     private void populateTable()
     {
-        DefaultTableModel model = (DefaultTableModel) tableViewHospitals.getModel();
+        DefaultTableModel model = (DefaultTableModel) tableViewHouses.getModel();
         model.setRowCount(0);
         
-        for(Hospital h:hospitalDirectory.getHospitalDirectory())
+        for(House h:houseDirectory.getHouseDirectory())
         {
-            Object[] row = new Object[4];
+            Object[] row = new Object[3];
             row[0] = h;
-            row[1] = h.getHospitalZip();
-            row[2] = h.getHospitalCommunity();
-            row[3] = h.getHospitalCity();
+            row[1] = h.getCommunityName();
+            row[2] = h.getCityName();
             model.addRow(row);
         }
     }
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -54,33 +51,33 @@ public class viewHospitalJPanel extends javax.swing.JPanel {
 
         lblViewHospitals = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tableViewHospitals = new javax.swing.JTable();
+        tableViewHouses = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(0, 255, 255));
 
         lblViewHospitals.setBackground(new java.awt.Color(255, 255, 255));
         lblViewHospitals.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblViewHospitals.setForeground(new java.awt.Color(255, 0, 0));
-        lblViewHospitals.setText("                                                                                 View Hospitals");
+        lblViewHospitals.setText("                                                                                    View Houses");
 
-        tableViewHospitals.setModel(new javax.swing.table.DefaultTableModel(
+        tableViewHouses.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Hospital Name", "Hospital Zipcode", "Community Name", "City Name"
+                "House Address", "Community Name", "City Name"
             }
         ));
-        jScrollPane1.setViewportView(tableViewHospitals);
+        jScrollPane1.setViewportView(tableViewHouses);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblViewHospitals, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1050, Short.MAX_VALUE)
+            .addComponent(lblViewHospitals, javax.swing.GroupLayout.DEFAULT_SIZE, 1050, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1)
@@ -89,11 +86,11 @@ public class viewHospitalJPanel extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(39, 39, 39)
+                .addGap(38, 38, 38)
                 .addComponent(lblViewHospitals)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 126, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 116, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(221, 221, 221))
+                .addGap(232, 232, 232))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -101,6 +98,6 @@ public class viewHospitalJPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblViewHospitals;
-    private javax.swing.JTable tableViewHospitals;
+    private javax.swing.JTable tableViewHouses;
     // End of variables declaration//GEN-END:variables
 }

@@ -57,8 +57,8 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-              <Component id="lblCreateCommunity" pref="28" max="32767" attributes="0"/>
-              <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
+              <Component id="lblCreateCommunity" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="110" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblSelectCityName" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                   <Component id="cityComboBox" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
@@ -70,7 +70,7 @@
               </Group>
               <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
               <Component id="submitButton" min="-2" pref="30" max="-2" attributes="0"/>
-              <EmptySpace pref="175" max="32767" attributes="0"/>
+              <EmptySpace pref="200" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

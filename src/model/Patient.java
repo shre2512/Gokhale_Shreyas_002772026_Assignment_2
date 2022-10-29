@@ -19,6 +19,9 @@ public class Patient {
     private String emailId;
     private int age;
     private String phoneNumber;
+    private String houseAddress;
+    private String communityName;
+    private String cityName;
     
     private final int patientId;
     private final ArrayList<Encounter> patientEncounters;
@@ -103,5 +106,29 @@ public class Patient {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public String getHouseAddress() {
+        return houseAddress;
+    }
+
+    public void setHouseAddress(String houseAddress) {
+        this.houseAddress = houseAddress;
+    }
+
+    public String getCommunityName() {
+        return communityName;
+    }
+
+    public void setCommunityName(String communityName) {
+        this.communityName = communityName;
+    }
+
+    public String getCityName() {
+        return cityName;
+    }
+
+    public void setCityName(String cityName) {
+        this.cityName = cityName;
     }
 }

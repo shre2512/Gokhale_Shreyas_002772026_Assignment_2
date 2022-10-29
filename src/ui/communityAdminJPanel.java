@@ -153,7 +153,7 @@ public class communityAdminJPanel extends javax.swing.JPanel {
                 .addComponent(btnUpdateCity, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
                 .addComponent(btnDeleteCity, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(100, Short.MAX_VALUE))
+                .addContainerGap(159, Short.MAX_VALUE))
         );
 
         citySplitPane.setLeftComponent(cityControlArea);
@@ -174,7 +174,7 @@ public class communityAdminJPanel extends javax.swing.JPanel {
             .addGroup(cityWorkAreaLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(79, Short.MAX_VALUE))
         );
 
         citySplitPane.setRightComponent(cityWorkArea);
@@ -247,7 +247,7 @@ public class communityAdminJPanel extends javax.swing.JPanel {
                 .addComponent(btnUpdateCommunity, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
                 .addComponent(btnDeleteCommunity, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(100, Short.MAX_VALUE))
+                .addContainerGap(159, Short.MAX_VALUE))
         );
 
         communitySplitPane.setLeftComponent(communityControlArea);
@@ -262,7 +262,7 @@ public class communityAdminJPanel extends javax.swing.JPanel {
         );
         communityWorkAreaLayout.setVerticalGroup(
             communityWorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 423, Short.MAX_VALUE)
+            .addGap(0, 482, Short.MAX_VALUE)
         );
 
         communitySplitPane.setRightComponent(communityWorkArea);
@@ -275,7 +275,7 @@ public class communityAdminJPanel extends javax.swing.JPanel {
         );
         manageCommunitiesLayout.setVerticalGroup(
             manageCommunitiesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(communitySplitPane, javax.swing.GroupLayout.DEFAULT_SIZE, 423, Short.MAX_VALUE)
+            .addComponent(communitySplitPane, javax.swing.GroupLayout.DEFAULT_SIZE, 482, Short.MAX_VALUE)
         );
 
         tabbedPane.addTab("Manage Communities", manageCommunities);
@@ -333,7 +333,7 @@ public class communityAdminJPanel extends javax.swing.JPanel {
                 .addComponent(btnUpdateHospital, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
                 .addComponent(btnDeleteHospital, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(100, Short.MAX_VALUE))
+                .addContainerGap(159, Short.MAX_VALUE))
         );
 
         hospitalSplitPane.setLeftComponent(hospitalControlArea);
@@ -348,7 +348,7 @@ public class communityAdminJPanel extends javax.swing.JPanel {
         );
         hospitalWorkAreaLayout.setVerticalGroup(
             hospitalWorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 423, Short.MAX_VALUE)
+            .addGap(0, 482, Short.MAX_VALUE)
         );
 
         hospitalSplitPane.setRightComponent(hospitalWorkArea);
@@ -419,7 +419,7 @@ public class communityAdminJPanel extends javax.swing.JPanel {
                 .addComponent(btnUpdateHospital1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
                 .addComponent(btnDeleteHouse, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(100, Short.MAX_VALUE))
+                .addContainerGap(159, Short.MAX_VALUE))
         );
 
         houseSplitPane.setLeftComponent(houseControlArea);
@@ -434,7 +434,7 @@ public class communityAdminJPanel extends javax.swing.JPanel {
         );
         houseWorkAreaLayout.setVerticalGroup(
             houseWorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 423, Short.MAX_VALUE)
+            .addGap(0, 482, Short.MAX_VALUE)
         );
 
         houseSplitPane.setRightComponent(houseWorkArea);
@@ -505,7 +505,7 @@ public class communityAdminJPanel extends javax.swing.JPanel {
                 .addComponent(btnUpdatePeople, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
                 .addComponent(btnDeletePeople, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(100, Short.MAX_VALUE))
+                .addContainerGap(159, Short.MAX_VALUE))
         );
 
         peopleSplitPane.setLeftComponent(peopleControlArea);
@@ -520,7 +520,7 @@ public class communityAdminJPanel extends javax.swing.JPanel {
         );
         peopleWorkAreaLayout.setVerticalGroup(
             peopleWorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 423, Short.MAX_VALUE)
+            .addGap(0, 482, Short.MAX_VALUE)
         );
 
         peopleSplitPane.setRightComponent(peopleWorkArea);
@@ -591,7 +591,7 @@ public class communityAdminJPanel extends javax.swing.JPanel {
                 .addComponent(btnUpdateEncounter, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
                 .addComponent(btnDeleteEncounter, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(100, Short.MAX_VALUE))
+                .addContainerGap(159, Short.MAX_VALUE))
         );
 
         encounterSplitPane.setLeftComponent(encounterControlArea);
@@ -606,7 +606,7 @@ public class communityAdminJPanel extends javax.swing.JPanel {
         );
         encounterWorkAreaLayout.setVerticalGroup(
             encounterWorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 423, Short.MAX_VALUE)
+            .addGap(0, 482, Short.MAX_VALUE)
         );
 
         encounterSplitPane.setRightComponent(encounterWorkArea);
@@ -640,9 +640,9 @@ public class communityAdminJPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblSystemAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblSystemAdmin)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(tabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 513, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

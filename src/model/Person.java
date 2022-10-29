@@ -18,6 +18,9 @@ public class Person {
     private String emailId;
     private int age;
     private String phoneNumber;
+    private String houseAddress;
+    private String communityName;
+    private String cityName;
     
     public Person()
     {
@@ -67,4 +70,35 @@ public class Person {
     public int getPersonId() {
         return personId;
     }
+
+    public String getHouseAddress() {
+        return houseAddress;
+    }
+
+    public void setHouseAddress(String houseAddress) {
+        this.houseAddress = houseAddress;
+    }
+
+    public String getCommunityName() {
+        return communityName;
+    }
+
+    public void setCommunityName(String communityName) {
+        this.communityName = communityName;
+    }
+
+    public String getCityName() {
+        return cityName;
+    }
+
+    public void setCityName(String cityName) {
+        this.cityName = cityName;
+    }
+    
+    @Override
+    public String toString()
+    {
+        return this.name;
+    }
+    
 }
