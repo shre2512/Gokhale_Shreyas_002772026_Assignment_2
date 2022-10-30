@@ -5,9 +5,6 @@
 package ui;
 
 import javax.swing.table.DefaultTableModel;
-import model.DoctorDirectory;
-import model.Hospital;
-import model.PatientDirectory;
 import model.Person;
 import model.PersonDirectory;
 

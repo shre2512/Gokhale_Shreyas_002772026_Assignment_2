@@ -9,6 +9,7 @@ import java.io.IOException;
 import model.CityDirectory;
 import model.CommunityDirectory;
 import model.DoctorDirectory;
+import model.EncounterDirectory;
 import model.HospitalDirectory;
 import model.Patient;
 import model.PersonDirectory;
@@ -29,8 +30,9 @@ public class patientJPanel extends javax.swing.JPanel {
     CommunityDirectory communityDirectory;
     DoctorDirectory doctorDirectory;
     HospitalDirectory hospitalDirectory;
+    EncounterDirectory encounterDirectory;
     
-    public patientJPanel(Patient p, PersonDirectory personDirectory, CityDirectory cityDirectory, CommunityDirectory communityDirectory, DoctorDirectory doctorDirectory, HospitalDirectory hospitalDirectory) throws IOException {
+    public patientJPanel(Patient p, PersonDirectory personDirectory, CityDirectory cityDirectory, CommunityDirectory communityDirectory, DoctorDirectory doctorDirectory, HospitalDirectory hospitalDirectory, EncounterDirectory encounterDirectory) throws IOException {
         initComponents(); 
         this.p = p;
         this.personDirectory = personDirectory;
@@ -38,6 +40,7 @@ public class patientJPanel extends javax.swing.JPanel {
         this.communityDirectory = communityDirectory;
         this.doctorDirectory = doctorDirectory;
         this.hospitalDirectory = hospitalDirectory;
+        this.encounterDirectory = encounterDirectory;
     }
 
     /**
@@ -61,8 +64,12 @@ public class patientJPanel extends javax.swing.JPanel {
         encountersControlArea = new javax.swing.JPanel();
         btnCreateEncounter = new javax.swing.JButton();
         btnViewEncounter = new javax.swing.JButton();
-        btnUpdateEncounter = new javax.swing.JButton();
         encountersWorkArea = new javax.swing.JPanel();
+        searchDoctors = new javax.swing.JPanel();
+        searchDoctorsSplitPane = new javax.swing.JSplitPane();
+        searchControlArea = new javax.swing.JPanel();
+        btnSearchDoctors = new javax.swing.JButton();
+        searchWorkArea = new javax.swing.JPanel();
         lblWelcome = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 102));
@@ -166,9 +173,6 @@ public class patientJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnUpdateEncounter.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnUpdateEncounter.setText("Update");
-
         javax.swing.GroupLayout encountersControlAreaLayout = new javax.swing.GroupLayout(encountersControlArea);
         encountersControlArea.setLayout(encountersControlAreaLayout);
         encountersControlAreaLayout.setHorizontalGroup(
@@ -176,21 +180,18 @@ public class patientJPanel extends javax.swing.JPanel {
             .addGroup(encountersControlAreaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(encountersControlAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnUpdateEncounter, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
-                    .addComponent(btnCreateEncounter, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
-                    .addComponent(btnViewEncounter, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE))
+                    .addComponent(btnViewEncounter, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
+                    .addComponent(btnCreateEncounter, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE))
                 .addContainerGap())
         );
         encountersControlAreaLayout.setVerticalGroup(
             encountersControlAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(encountersControlAreaLayout.createSequentialGroup()
-                .addGap(94, 94, 94)
+                .addGap(140, 140, 140)
                 .addComponent(btnCreateEncounter, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(26, 26, 26)
                 .addComponent(btnViewEncounter, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnUpdateEncounter, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(212, Short.MAX_VALUE))
+                .addContainerGap(220, Short.MAX_VALUE))
         );
 
         encountersSplitPane.setLeftComponent(encountersControlArea);
@@ -223,6 +224,63 @@ public class patientJPanel extends javax.swing.JPanel {
 
         tabbedPane.addTab("Encounters", personalEncounters);
 
+        searchControlArea.setBackground(new java.awt.Color(102, 255, 102));
+
+        btnSearchDoctors.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnSearchDoctors.setText("Search");
+        btnSearchDoctors.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchDoctorsActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout searchControlAreaLayout = new javax.swing.GroupLayout(searchControlArea);
+        searchControlArea.setLayout(searchControlAreaLayout);
+        searchControlAreaLayout.setHorizontalGroup(
+            searchControlAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(searchControlAreaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnSearchDoctors, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        searchControlAreaLayout.setVerticalGroup(
+            searchControlAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(searchControlAreaLayout.createSequentialGroup()
+                .addGap(199, 199, 199)
+                .addComponent(btnSearchDoctors, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(230, Short.MAX_VALUE))
+        );
+
+        searchDoctorsSplitPane.setLeftComponent(searchControlArea);
+
+        searchWorkArea.setBackground(new java.awt.Color(0, 255, 255));
+
+        javax.swing.GroupLayout searchWorkAreaLayout = new javax.swing.GroupLayout(searchWorkArea);
+        searchWorkArea.setLayout(searchWorkAreaLayout);
+        searchWorkAreaLayout.setHorizontalGroup(
+            searchWorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 949, Short.MAX_VALUE)
+        );
+        searchWorkAreaLayout.setVerticalGroup(
+            searchWorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 472, Short.MAX_VALUE)
+        );
+
+        searchDoctorsSplitPane.setRightComponent(searchWorkArea);
+
+        javax.swing.GroupLayout searchDoctorsLayout = new javax.swing.GroupLayout(searchDoctors);
+        searchDoctors.setLayout(searchDoctorsLayout);
+        searchDoctorsLayout.setHorizontalGroup(
+            searchDoctorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(searchDoctorsSplitPane)
+        );
+        searchDoctorsLayout.setVerticalGroup(
+            searchDoctorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(searchDoctorsSplitPane)
+        );
+
+        tabbedPane.addTab("Search Doctors", searchDoctors);
+
         lblWelcome.setBackground(new java.awt.Color(255, 255, 255));
         lblWelcome.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblWelcome.setForeground(new java.awt.Color(255, 0, 0));
@@ -247,10 +305,14 @@ public class patientJPanel extends javax.swing.JPanel {
 
     private void btnViewEncounterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewEncounterActionPerformed
         // TODO add your handling code here:
+        viewPersonalEncounters viewEncounter = new viewPersonalEncounters(p);
+        encountersSplitPane.setRightComponent(viewEncounter);
     }//GEN-LAST:event_btnViewEncounterActionPerformed
 
     private void btnCreateEncounterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateEncounterActionPerformed
         // TODO add your handling code here:
+        createPersonalEncounters createEncounter = new createPersonalEncounters(p, encounterDirectory, hospitalDirectory);
+        encountersSplitPane.setRightComponent(createEncounter);
     }//GEN-LAST:event_btnCreateEncounterActionPerformed
 
     private void btnViewDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewDetailsActionPerformed
@@ -265,11 +327,17 @@ public class patientJPanel extends javax.swing.JPanel {
         personalDetailSplitPane.setRightComponent(updateDetails);
     }//GEN-LAST:event_btnUpdateDetailsActionPerformed
 
+    private void btnSearchDoctorsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchDoctorsActionPerformed
+        // TODO add your handling code here:
+        searchNearDoctors searchDoctors =  new searchNearDoctors(cityDirectory, communityDirectory, doctorDirectory);
+        searchDoctorsSplitPane.setRightComponent(searchDoctors);
+    }//GEN-LAST:event_btnSearchDoctorsActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCreateEncounter;
+    private javax.swing.JButton btnSearchDoctors;
     private javax.swing.JButton btnUpdateDetails;
-    private javax.swing.JButton btnUpdateEncounter;
     private javax.swing.JButton btnViewDetails;
     private javax.swing.JButton btnViewEncounter;
     private javax.swing.JPanel encountersControlArea;
@@ -281,6 +349,10 @@ public class patientJPanel extends javax.swing.JPanel {
     private javax.swing.JPanel personalDetailsControlArea;
     private javax.swing.JPanel personalDetailsWorkArea;
     private javax.swing.JPanel personalEncounters;
+    private javax.swing.JPanel searchControlArea;
+    private javax.swing.JPanel searchDoctors;
+    private javax.swing.JSplitPane searchDoctorsSplitPane;
+    private javax.swing.JPanel searchWorkArea;
     private javax.swing.JTabbedPane tabbedPane;
     // End of variables declaration//GEN-END:variables
 }

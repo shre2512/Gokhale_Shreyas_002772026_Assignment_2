@@ -19,6 +19,7 @@ public class Doctor {
     private String houseAddress;
     private String communityName;
     private String cityName;
+    private String hospitalName;
     
     private final int doctorId;
     private final String doctorUserName;
@@ -33,6 +34,14 @@ public class Doctor {
 
     public int getDoctorId() {
         return doctorId;
+    }
+
+    public String getHospitalName() {
+        return hospitalName;
+    }
+
+    public void setHospitalName(String hospitalName) {
+        this.hospitalName = hospitalName;
     }
 
     public String getDoctorUserName() {

@@ -27,9 +27,9 @@ public class EncounterDirectory {
         this.encounterDirectory = encounterDirectory;
     }
     
-    public Encounter addNewEncounter()
+    public Encounter addNewEncounter(int patientID)
     {
-        Encounter newEncounter = new Encounter();
+        Encounter newEncounter = new Encounter(patientID);
         encounterDirectory.add(newEncounter);
         return newEncounter;
     }

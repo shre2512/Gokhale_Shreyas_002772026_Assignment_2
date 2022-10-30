@@ -4,7 +4,6 @@
  */
 package model;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 /**
@@ -15,15 +14,19 @@ public class Encounter {
     
     private String hospitalName;
     private String doctorName;
-    private int encounterDay;
-    private int encounterMonth;
-    private int encounterYear;
     private String encounterDate;
+    private String encounterSymptoms;
+    private final int patientID;
     private final ArrayList<VitalSigns> encounterVitalSigns;
     
-    public Encounter()
+    public Encounter(int patientID)
     {
+        this.patientID = patientID;
         this.encounterVitalSigns = new ArrayList<>();
+    }
+
+    public int getPatientID() {
+        return patientID;
     }
     
     public String getHospitalName() {
@@ -41,31 +44,6 @@ public class Encounter {
     public void setDoctorName(String doctorName) {
         this.doctorName = doctorName;
     }
-    
-
-    public int getEncounterDay() {
-        return encounterDay;
-    }
-
-    public void setEncounterDay(int encounterDay) {
-        this.encounterDay = encounterDay;
-    }
-
-    public int getEncounterMonth() {
-        return encounterMonth;
-    }
-
-    public void setEncounterMonth(int encounterMonth) {
-        this.encounterMonth = encounterMonth;
-    }
-
-    public int getEncounterYear() {
-        return encounterYear;
-    }
-
-    public void setEncounterYear(int encounterYear) {
-        this.encounterYear = encounterYear;
-    }
 
     public ArrayList<VitalSigns> getEncounterVitalSigns() {
         return encounterVitalSigns;
@@ -75,7 +53,15 @@ public class Encounter {
         return encounterDate;
     }
 
-    public void setEncounterDate() {
-        this.encounterDate = LocalDate.of(encounterYear, encounterMonth, encounterDay).toString();
+    public void setEncounterDate(String encounterDate) {
+        this.encounterDate = encounterDate;
+    }
+
+    public String getEncounterSymptoms() {
+        return encounterSymptoms;
+    }
+
+    public void setEncounterSymptoms(String encounterSymptoms) {
+        this.encounterSymptoms = encounterSymptoms;
     }
 }

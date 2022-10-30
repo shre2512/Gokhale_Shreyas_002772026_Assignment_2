@@ -211,7 +211,7 @@ public class MainJFrame extends javax.swing.JFrame {
         {
             try {
                 JOptionPane.showMessageDialog(this, "Logged In As System Admin");
-                systemAdminJPanel sysAdmin = new systemAdminJPanel(cityDirectory, communityDirectory, hospitalDirectory, houseDirectory, patientDirectory, personDirectory, doctorDirectory);
+                systemAdminJPanel sysAdmin = new systemAdminJPanel(cityDirectory, communityDirectory, hospitalDirectory, houseDirectory, patientDirectory, personDirectory, doctorDirectory, encounterDirectory);
                 splitPane.setRightComponent(sysAdmin);
                 buttonLogOut.setVisible(true);
             } catch (IOException ex) {
@@ -256,12 +256,16 @@ public class MainJFrame extends javax.swing.JFrame {
             {
                 try {
                     JOptionPane.showMessageDialog(this, "Logged In As Patient");
-                    patientJPanel patient = new patientJPanel(pInitial, personDirectory, cityDirectory, communityDirectory, doctorDirectory, hospitalDirectory);
+                    patientJPanel patient = new patientJPanel(pInitial, personDirectory, cityDirectory, communityDirectory, doctorDirectory, hospitalDirectory, encounterDirectory);
                     splitPane.setRightComponent(patient);
                     buttonLogOut.setVisible(true);
                 } catch (IOException ex) {
                     Logger.getLogger(MainJFrame.class.getName()).log(Level.SEVERE, null, ex);
                 }
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(this, "Invalid Credentials");
             }
         }
         
@@ -288,6 +292,10 @@ public class MainJFrame extends javax.swing.JFrame {
                 } catch (IOException ex) {
                     Logger.getLogger(MainJFrame.class.getName()).log(Level.SEVERE, null, ex);
                 }
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(this, "Invalid Credentials");
             }
         }
         

@@ -42,8 +42,7 @@ public class viewPatientJPanel extends javax.swing.JPanel {
             row[6] = p.getPatientWeight();
             row[7] = p.getPatientBloodGroup();
             model.addRow(row);
-        }
-        
+        }  
     }
 
     /**

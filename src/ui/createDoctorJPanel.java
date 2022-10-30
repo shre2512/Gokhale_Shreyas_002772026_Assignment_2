@@ -302,6 +302,7 @@ public class createDoctorJPanel extends javax.swing.JPanel {
         d.setCommunityName(tblViewPerson.getValueAt(tblViewPerson.getSelectedRow(), 6).toString());
         d.setCityName(tblViewPerson.getValueAt(tblViewPerson.getSelectedRow(), 7).toString());
         d.setDoctorSpecialization(txtDoctorSpecialization.getText());
+        d.setHospitalName(hospitalComboBox.getSelectedItem().toString());
         
         for(Hospital h:hospitalDirectory.getHospitalDirectory())
         {

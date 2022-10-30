@@ -13,6 +13,7 @@ import javax.swing.ImageIcon;
 import model.CityDirectory;
 import model.CommunityDirectory;
 import model.DoctorDirectory;
+import model.EncounterDirectory;
 import model.HospitalDirectory;
 import model.HouseDirectory;
 import model.PatientDirectory;
@@ -35,9 +36,10 @@ public class systemAdminJPanel extends javax.swing.JPanel {
     PatientDirectory patientDirectory;
     PersonDirectory personDirectory;
     DoctorDirectory doctorDirectory;
+    EncounterDirectory ecounterDirectory;
     
     public systemAdminJPanel(CityDirectory cityDirectory, CommunityDirectory communityDirectory, HospitalDirectory hospitalDirectory, HouseDirectory houseDirectory, PatientDirectory patientDirectory,
-    PersonDirectory personDirectory, DoctorDirectory doctorDirectory) throws IOException {
+    PersonDirectory personDirectory, DoctorDirectory doctorDirectory, EncounterDirectory ecounterDirectory) throws IOException {
         initComponents();
         URL urlInput = new URL("https://i.postimg.cc/vmq8jXq9/city.jpg");
         BufferedImage image = ImageIO.read(urlInput);
@@ -50,6 +52,7 @@ public class systemAdminJPanel extends javax.swing.JPanel {
         this.patientDirectory = patientDirectory;
         this.personDirectory = personDirectory;
         this.doctorDirectory = doctorDirectory;
+        this.ecounterDirectory = ecounterDirectory;
     }
 
     /**
@@ -910,10 +913,14 @@ public class systemAdminJPanel extends javax.swing.JPanel {
 
     private void btnCreateEncounterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateEncounterActionPerformed
         // TODO add your handling code here:
+        createEncounters encounters = new createEncounters(patientDirectory, ecounterDirectory, hospitalDirectory);
+        encounterSplitPane.setRightComponent(encounters);
     }//GEN-LAST:event_btnCreateEncounterActionPerformed
 
     private void btnViewEncounterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewEncounterActionPerformed
         // TODO add your handling code here:
+        viewAllEncounters encounters = new viewAllEncounters(ecounterDirectory);
+        encounterSplitPane.setRightComponent(encounters);
     }//GEN-LAST:event_btnViewEncounterActionPerformed
 
     private void btnDeleteEncounterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteEncounterActionPerformed
