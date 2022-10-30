@@ -11,10 +11,12 @@ import javax.swing.JOptionPane;
 import model.Admin;
 import model.CityDirectory;
 import model.CommunityDirectory;
+import model.Doctor;
 import model.DoctorDirectory;
 import model.EncounterDirectory;
 import model.HospitalDirectory;
 import model.HouseDirectory;
+import model.Patient;
 import model.PatientDirectory;
 import model.PersonDirectory;
 
@@ -237,6 +239,58 @@ public class MainJFrame extends javax.swing.JFrame {
             buttonLogOut.setVisible(true);
         }
         */
+        else if(selectRole.getSelectedItem().toString().equals("Patient"))
+        {
+            boolean flag = false;
+            Patient pInitial = null;
+            for(Patient p:patientDirectory.getPatientDirectory())
+            {
+                if(p.getPatientUserName().equals(userNameText.getText()) && p.getPatientPassWord().equals(passwordText.getText()))
+                {
+                    flag = true;
+                    pInitial = p;
+                    break;
+                }
+            }
+            if(flag == true)
+            {
+                try {
+                    JOptionPane.showMessageDialog(this, "Logged In As Patient");
+                    patientJPanel patient = new patientJPanel(pInitial, personDirectory, cityDirectory, communityDirectory, doctorDirectory, hospitalDirectory);
+                    splitPane.setRightComponent(patient);
+                    buttonLogOut.setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(MainJFrame.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        
+        else if(selectRole.getSelectedItem().toString().equals("Doctor"))
+        {
+            boolean flag = false;
+            Doctor dInitial = null;
+            for(Doctor d:doctorDirectory.getDoctorDirectory())
+            {
+                if(d.getDoctorUserName().equals(userNameText.getText()) && d.getDoctorPassWord().equals(passwordText.getText()))
+                {
+                    flag = true;
+                    dInitial = d;
+                    break;
+                }
+            }
+            if(flag == true)
+            {
+                try {
+                    JOptionPane.showMessageDialog(this, "Logged In As Doctor");
+                    doctorJPanel doctor = new doctorJPanel(dInitial);
+                    splitPane.setRightComponent(doctor);
+                    buttonLogOut.setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(MainJFrame.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        
         else
         {
             JOptionPane.showMessageDialog(this, "Invalid Credentials");

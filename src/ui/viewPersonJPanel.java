@@ -22,17 +22,11 @@ public class viewPersonJPanel extends javax.swing.JPanel {
      */
     
     PersonDirectory personDirectory;
-    PatientDirectory patientDirectory;
-    DoctorDirectory doctorDirectory;
     
-    public viewPersonJPanel(PersonDirectory personDirectory, PatientDirectory patientDirectory, DoctorDirectory doctorDirectory) {
+    public viewPersonJPanel(PersonDirectory personDirectory) {
         initComponents();
         this.personDirectory = personDirectory;
-        this.patientDirectory = patientDirectory;
-        this.doctorDirectory = doctorDirectory;
         populatePersonTable();
-        /*populatePatientTable();
-        populateDoctorTable();*/
     }
     
     private void populatePersonTable()
@@ -65,49 +59,15 @@ public class viewPersonJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         lblPersonDirectory = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tableViewDoctor = new javax.swing.JTable();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tableViewPatient = new javax.swing.JTable();
         jScrollPane3 = new javax.swing.JScrollPane();
         tableViewPerson = new javax.swing.JTable();
-        lblViewPatients = new javax.swing.JLabel();
-        lblViewDoctors = new javax.swing.JLabel();
-        makeDoctor = new javax.swing.JButton();
-        makePatient = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(0, 255, 255));
 
         lblPersonDirectory.setBackground(new java.awt.Color(255, 255, 255));
         lblPersonDirectory.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblPersonDirectory.setForeground(new java.awt.Color(255, 0, 0));
-        lblPersonDirectory.setText("                                                                Select Person to make Patient / Doctor");
-
-        tableViewDoctor.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(tableViewDoctor);
-
-        tableViewPatient.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane2.setViewportView(tableViewPatient);
+        lblPersonDirectory.setText("                                                                                       Person Directory");
 
         tableViewPerson.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -123,34 +83,6 @@ public class viewPersonJPanel extends javax.swing.JPanel {
         tableViewPerson.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane3.setViewportView(tableViewPerson);
 
-        lblViewPatients.setBackground(new java.awt.Color(255, 255, 255));
-        lblViewPatients.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblViewPatients.setForeground(new java.awt.Color(255, 0, 0));
-        lblViewPatients.setText("                                                                                 Patient Directory");
-
-        lblViewDoctors.setBackground(new java.awt.Color(255, 255, 255));
-        lblViewDoctors.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblViewDoctors.setForeground(new java.awt.Color(255, 0, 0));
-        lblViewDoctors.setText("                                                                                   Doctor Directory");
-
-        makeDoctor.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        makeDoctor.setText("Make Doctor");
-        makeDoctor.setPreferredSize(new java.awt.Dimension(103, 30));
-        makeDoctor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                makeDoctorActionPerformed(evt);
-            }
-        });
-
-        makePatient.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        makePatient.setText("Make Patient");
-        makePatient.setPreferredSize(new java.awt.Dimension(104, 30));
-        makePatient.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                makePatientActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -158,66 +90,25 @@ public class viewPersonJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblPersonDirectory, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1038, Short.MAX_VALUE)
-                    .addComponent(lblViewPatients, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblViewDoctors, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 1038, Short.MAX_VALUE)
+                    .addComponent(lblPersonDirectory, javax.swing.GroupLayout.DEFAULT_SIZE, 1038, Short.MAX_VALUE))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(makePatient, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47)
-                .addComponent(makeDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(440, 440, 440))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(17, 17, 17)
                 .addComponent(lblPersonDirectory)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(44, 44, 44)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(makeDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(makePatient, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
-                .addComponent(lblViewPatients, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
-                .addComponent(lblViewDoctors, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(3, 3, 3)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19))
+                .addContainerGap(354, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void makeDoctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_makeDoctorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_makeDoctorActionPerformed
-
-    private void makePatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_makePatientActionPerformed
-        // TODO add your handling code here:
-        
-        Person p = (Person)tableViewPerson.getValueAt(tableViewPerson.getSelectedRow(), 0);
-        
-    }//GEN-LAST:event_makePatientActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lblPersonDirectory;
-    private javax.swing.JLabel lblViewDoctors;
-    private javax.swing.JLabel lblViewPatients;
-    private javax.swing.JButton makeDoctor;
-    private javax.swing.JButton makePatient;
-    private javax.swing.JTable tableViewDoctor;
-    private javax.swing.JTable tableViewPatient;
     private javax.swing.JTable tableViewPerson;
     // End of variables declaration//GEN-END:variables
 }
