@@ -160,27 +160,13 @@ public class createPersonJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap(603, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(selectCityCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblSelectCity, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(lblPersonAge, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(4, 4, 4)))
-                                .addGap(217, 217, 217))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(44, 44, 44)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblPersonPhoneNumber)
-                                    .addComponent(lblSelectCommunity))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -189,8 +175,16 @@ public class createPersonJPanel extends javax.swing.JPanel {
                                         .addComponent(lblSelectHouse, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addComponent(lblPersonGender, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(lblPersonEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addGap(232, 232, 232)))
+                                            .addComponent(lblPersonEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(lblPersonAge, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(lblSelectCity, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(232, 232, 232))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(44, 44, 44)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblPersonPhoneNumber)
+                                    .addComponent(lblSelectCommunity))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(selectCommunityCombo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(selectHouseCombo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -232,9 +226,7 @@ public class createPersonJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblPersonGender, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtGender, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtGender, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(txtEmailId, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
@@ -277,35 +269,43 @@ public class createPersonJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_selectCityComboActionPerformed
 
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
-        
-        Person newPerson = personDirectory.addNewPerson();
-        String selectedCity = selectCityCombo.getSelectedItem().toString();
-        String selectedCommunity = selectCommunityCombo.getSelectedItem().toString();
-        String selectedHouseAddress = selectHouseCombo.getSelectedItem().toString();
-        
-        newPerson.setCityName(selectedCity);
-        newPerson.setCommunityName(selectedCommunity);
-        newPerson.setHouseAddress(selectedHouseAddress);
-        newPerson.setAge(Integer.parseInt(txtAge.getText()));
-        newPerson.setEmailId(txtEmailId.getText());
-        newPerson.setGender(txtGender.getText());
-        newPerson.setName(txtName.getText());
-        newPerson.setPhoneNumber(txtPhoneNumber.getText());
-              
-        for(House h:houseDirectory.getHouseDirectory())
+           
+        String validate = validationCheck();
+        if(!validate.isEmpty())
         {
-            if(h.getStreetAddress().equals(selectedHouseAddress))
-            {
-                h.getResidents().add(newPerson);
-            }
+            JOptionPane.showMessageDialog(this, validate);
         }
+        else
+        {
+            Person newPerson = personDirectory.addNewPerson();
+            String selectedCity = selectCityCombo.getSelectedItem().toString();
+            String selectedCommunity = selectCommunityCombo.getSelectedItem().toString();
+            String selectedHouseAddress = selectHouseCombo.getSelectedItem().toString();
 
-        JOptionPane.showMessageDialog(this, "Person Added!");
-        txtAge.setText("");
-        txtEmailId.setText("");
-        txtGender.setText("");
-        txtName.setText("");
-        txtPhoneNumber.setText("");  
+            newPerson.setCityName(selectedCity);
+            newPerson.setCommunityName(selectedCommunity);
+            newPerson.setHouseAddress(selectedHouseAddress);
+            newPerson.setAge(Integer.parseInt(txtAge.getText()));
+            newPerson.setEmailId(txtEmailId.getText());
+            newPerson.setGender(txtGender.getText());
+            newPerson.setName(txtName.getText());
+            newPerson.setPhoneNumber(txtPhoneNumber.getText());
+
+            for(House h:houseDirectory.getHouseDirectory())
+            {
+                if(h.getStreetAddress().equals(selectedHouseAddress))
+                {
+                    h.getResidents().add(newPerson);
+                }
+            }
+
+            JOptionPane.showMessageDialog(this, "Person Added!");
+            txtAge.setText("");
+            txtEmailId.setText("");
+            txtGender.setText("");
+            txtName.setText("");
+            txtPhoneNumber.setText("");
+        }
     }//GEN-LAST:event_submitButtonActionPerformed
 
     private void txtGenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGenderActionPerformed
@@ -351,6 +351,23 @@ public class createPersonJPanel extends javax.swing.JPanel {
                 selectHouseCombo.addItem(h.getStreetAddress());
             }
         }
+    }
+    
+    private String validationCheck()
+    {
+        if(txtName.getText().isEmpty() || txtGender.getText().isEmpty() || txtEmailId.getText().isEmpty() || txtPhoneNumber.getText().isEmpty() || txtAge.getText().isEmpty())
+        {
+            return "Please fill all fields!";
+        }
+        try
+        {
+            int age = Integer.parseInt(txtAge.getText());
+        }
+        catch(NumberFormatException ex)
+        {
+            return "Age has to be a Number!";
+        }
+        return "";
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

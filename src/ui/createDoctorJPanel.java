@@ -292,29 +292,39 @@ public class createDoctorJPanel extends javax.swing.JPanel {
 
     private void btnCreateDoctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateDoctorActionPerformed
         // TODO add your handling code here:
-        Doctor d = doctorDirectory.addNewDoctor(Integer.parseInt(txtUID.getText()), txtUserName.getText(), txtPassWord.getText());
-        d.setName(tblViewPerson.getValueAt(tblViewPerson.getSelectedRow(), 0).toString());
-        d.setGender(tblViewPerson.getValueAt(tblViewPerson.getSelectedRow(), 1).toString());
-        d.setEmailId(tblViewPerson.getValueAt(tblViewPerson.getSelectedRow(), 2).toString());
-        d.setAge(Integer.parseInt(tblViewPerson.getValueAt(tblViewPerson.getSelectedRow(), 3).toString()));
-        d.setPhoneNumber(tblViewPerson.getValueAt(tblViewPerson.getSelectedRow(), 4).toString());
-        d.setHouseAddress(tblViewPerson.getValueAt(tblViewPerson.getSelectedRow(), 5).toString());
-        d.setCommunityName(tblViewPerson.getValueAt(tblViewPerson.getSelectedRow(), 6).toString());
-        d.setCityName(tblViewPerson.getValueAt(tblViewPerson.getSelectedRow(), 7).toString());
-        d.setDoctorSpecialization(txtDoctorSpecialization.getText());
-        d.setHospitalName(hospitalComboBox.getSelectedItem().toString());
         
-        for(Hospital h:hospitalDirectory.getHospitalDirectory())
+        String validate = validationCheck();
+        if(!validate.isEmpty())
         {
-            if(h.getHospitalName().equals(hospitalComboBox.getSelectedItem().toString()))
-            {
-                h.getHospitalDoctors().add(d);
-            } 
+            JOptionPane.showMessageDialog(this, validate);
         }
-        JOptionPane.showMessageDialog(this, "Doctor Created!");
-        txtUserName.setText("");
-        txtPassWord.setText("");
-        txtDoctorSpecialization.setText("");
+        else
+        {
+            Doctor d = doctorDirectory.addNewDoctor(Integer.parseInt(txtUID.getText()), txtUserName.getText(), txtPassWord.getText());
+            d.setName(tblViewPerson.getValueAt(tblViewPerson.getSelectedRow(), 0).toString());
+            d.setGender(tblViewPerson.getValueAt(tblViewPerson.getSelectedRow(), 1).toString());
+            d.setEmailId(tblViewPerson.getValueAt(tblViewPerson.getSelectedRow(), 2).toString());
+            d.setAge(Integer.parseInt(tblViewPerson.getValueAt(tblViewPerson.getSelectedRow(), 3).toString()));
+            d.setPhoneNumber(tblViewPerson.getValueAt(tblViewPerson.getSelectedRow(), 4).toString());
+            d.setHouseAddress(tblViewPerson.getValueAt(tblViewPerson.getSelectedRow(), 5).toString());
+            d.setCommunityName(tblViewPerson.getValueAt(tblViewPerson.getSelectedRow(), 6).toString());
+            d.setCityName(tblViewPerson.getValueAt(tblViewPerson.getSelectedRow(), 7).toString());
+            d.setDoctorSpecialization(txtDoctorSpecialization.getText());
+            d.setHospitalName(hospitalComboBox.getSelectedItem().toString());
+
+            for(Hospital h:hospitalDirectory.getHospitalDirectory())
+            {
+                if(h.getHospitalName().equals(hospitalComboBox.getSelectedItem().toString()))
+                {
+                    h.getHospitalDoctors().add(d);
+                } 
+            }
+            JOptionPane.showMessageDialog(this, "Doctor Created!");
+            txtUID.setText("");
+            txtUserName.setText("");
+            txtPassWord.setText("");
+            txtDoctorSpecialization.setText("");
+        }
     }//GEN-LAST:event_btnCreateDoctorActionPerformed
 
     private void tblViewPersonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblViewPersonMouseClicked
@@ -386,8 +396,15 @@ public class createDoctorJPanel extends javax.swing.JPanel {
                 hospitalComboBox.addItem(h.getHospitalName());
             }
         }
-        
-        
+    }
+    
+    private String validationCheck()
+    {
+        if(txtUserName.getText().isEmpty() || txtPassWord.getText().isEmpty() || txtDoctorSpecialization.getText().isEmpty())
+        {
+            return "Please fill all fields!";
+        }
+        return "";
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

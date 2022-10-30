@@ -191,16 +191,25 @@ public class createPersonalEncounters extends javax.swing.JPanel {
 
     private void btnCreateEncounterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateEncounterActionPerformed
         // TODO add your handling code here:
-        
-        Encounter e = ecounterDirectory.addNewEncounter(p.getPatientId());
-        
-        e.setHospitalName(hospitalComboBox.getSelectedItem().toString());
-        e.setDoctorName(doctorComboBox.getSelectedItem().toString());
-        e.setEncounterSymptoms(txtSymptoms.getText());
-        e.setEncounterDate(txtDate.getText());
-        p.getPatientEncounters().add(e);
-        
-        JOptionPane.showMessageDialog(this, "Encounter Created!");
+        String validate = validationCheck();
+        if(!validate.isEmpty())
+        {
+            JOptionPane.showMessageDialog(this, validate);
+        }
+        else
+        {
+            Encounter e = ecounterDirectory.addNewEncounter(p.getPatientId());
+
+            e.setHospitalName(hospitalComboBox.getSelectedItem().toString());
+            e.setDoctorName(doctorComboBox.getSelectedItem().toString());
+            e.setEncounterSymptoms(txtSymptoms.getText());
+            e.setEncounterDate(txtDate.getText());
+            p.getPatientEncounters().add(e);
+
+            JOptionPane.showMessageDialog(this, "Encounter Created!");
+            txtSymptoms.setText("");
+            txtDate.setText("");
+        }
     }//GEN-LAST:event_btnCreateEncounterActionPerformed
     
     private void populateHospitalComboBox(HospitalDirectory hospitalDirectory)
@@ -225,7 +234,15 @@ public class createPersonalEncounters extends javax.swing.JPanel {
             }
         }
     }
-
+    
+    private String validationCheck()
+    {
+        if(txtSymptoms.getText().isEmpty() || txtDate.getText().isEmpty())
+        {
+            return "Please fill all fields!";
+        }
+        return "";
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCreateEncounter;
     private javax.swing.JComboBox<String> doctorComboBox;

@@ -144,25 +144,33 @@ public class createHouseJPanel extends javax.swing.JPanel {
 
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
         // TODO add your handling code here:
-
-        House newHouse = houseDirectory.addNewHouse();
-        String selectedCity = selectCityCombo.getSelectedItem().toString();
-        String selectedCommunity = selectCommunityCombo.getSelectedItem().toString();
-
-        newHouse.setCityName(selectedCity);
-        newHouse.setCommunityName(selectedCommunity);
-        newHouse.setStreetAddress(txtHouseAddress.getText());
-
-        for(Community cm:communityDirectory.getCommunityDirectory())
+        
+        String validate = validationCheck();
+        if(!validate.isEmpty())
         {
-            if(cm.getCommunityName().equals(selectedCommunity))
-            {
-                cm.getCommunityHouses().add(newHouse);
-            }
+            JOptionPane.showMessageDialog(this, validate);
         }
+        else
+        {
+            House newHouse = houseDirectory.addNewHouse();
+            String selectedCity = selectCityCombo.getSelectedItem().toString();
+            String selectedCommunity = selectCommunityCombo.getSelectedItem().toString();
 
-        JOptionPane.showMessageDialog(this, "House Added!");
-        txtHouseAddress.setText("");
+            newHouse.setCityName(selectedCity);
+            newHouse.setCommunityName(selectedCommunity);
+            newHouse.setStreetAddress(txtHouseAddress.getText());
+
+            for(Community cm:communityDirectory.getCommunityDirectory())
+            {
+                if(cm.getCommunityName().equals(selectedCommunity))
+                {
+                    cm.getCommunityHouses().add(newHouse);
+                }
+            }
+
+            JOptionPane.showMessageDialog(this, "House Added!");
+            txtHouseAddress.setText("");
+        }
     }//GEN-LAST:event_submitButtonActionPerformed
 
     private void selectCityComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectCityComboActionPerformed
@@ -193,6 +201,15 @@ public class createHouseJPanel extends javax.swing.JPanel {
                 selectCommunityCombo.addItem(cm.getCommunityName());
             }
         }
+    }
+    
+    private String validationCheck()
+    {
+        if(txtHouseAddress.getText().isEmpty())
+        {
+            return "Please fill all fields!";
+        }
+        return "";
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

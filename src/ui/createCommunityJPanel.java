@@ -122,22 +122,29 @@ public class createCommunityJPanel extends javax.swing.JPanel {
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
         // TODO add your handling code here:
         
-        Community newCommunity = communityDirectory.addNewCommunity();
-        String selectedCity = cityComboBox.getSelectedItem().toString();
-        newCommunity.setCommunityName(txtCommunityName.getText());
-        newCommunity.setCityName(selectedCity);
-        
-        for(City c:cityDirectory.getCityDirectory())
+        String validate = validationCheck();
+        if(!validate.isEmpty())
         {
-            if(c.getCityName().equals(selectedCity))
-            {
-                c.getCityCommunities().add(newCommunity);
-            }
+            JOptionPane.showMessageDialog(this, validate);
         }
-
-        JOptionPane.showMessageDialog(this, "Community Added!");
-        txtCommunityName.setText("");
+        else
+        {
+            Community newCommunity = communityDirectory.addNewCommunity();
+            String selectedCity = cityComboBox.getSelectedItem().toString();
+            newCommunity.setCommunityName(txtCommunityName.getText());
+            newCommunity.setCityName(selectedCity);
         
+            for(City c:cityDirectory.getCityDirectory())
+            {
+                if(c.getCityName().equals(selectedCity))
+                {
+                    c.getCityCommunities().add(newCommunity);
+                }
+            }
+
+            JOptionPane.showMessageDialog(this, "Community Added!");
+            txtCommunityName.setText("");
+        }
     }//GEN-LAST:event_submitButtonActionPerformed
     
     private void txtCommunityNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCommunityNameActionPerformed
@@ -150,6 +157,14 @@ public class createCommunityJPanel extends javax.swing.JPanel {
         {
             cityComboBox.addItem(c.getCityName());
         }
+    }
+    private String validationCheck()
+    {
+        if(txtCommunityName.getText().isEmpty())
+        {
+            return "Please fill all fields!";
+        }
+        return "";
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

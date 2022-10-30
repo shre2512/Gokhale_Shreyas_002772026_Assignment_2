@@ -227,20 +227,29 @@ public class updateVitalSigns extends javax.swing.JPanel {
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
-        int selectedRowIndex = tblEncounters.getSelectedRow();
-        if(selectedRowIndex < 0)
+        
+        String validate = validationCheck();
+        if(!validate.isEmpty())
         {
-            JOptionPane.showMessageDialog(this, "Please Select a row to update");
+            JOptionPane.showMessageDialog(this, validate);
         }
-        DefaultTableModel model = (DefaultTableModel) tblEncounters.getModel();
-        VitalSigns vs = (VitalSigns) model.getValueAt(selectedRowIndex, 1);
-        vs.setPatientBloodPressure(Integer.parseInt(txtBloodPressure.getText()));
-        vs.setPatientBodyTemperature(Integer.parseInt(txtBodyTemperature.getText()));
-        vs.setPatientPulseRate(Integer.parseInt(txtPulseRate.getText()));
-        vs.setPatientRespirationRate(Integer.parseInt(txtRespirationRate.getText()));
-        JOptionPane.showMessageDialog(this, "Vital Signs Updated!");
-        clearFormText();
-        populateTable(d, vitalSignsDirectory);
+        else
+        {
+            int selectedRowIndex = tblEncounters.getSelectedRow();
+            if(selectedRowIndex < 0)
+            {
+                JOptionPane.showMessageDialog(this, "Please Select a row to update");
+            }
+            DefaultTableModel model = (DefaultTableModel) tblEncounters.getModel();
+            VitalSigns vs = (VitalSigns) model.getValueAt(selectedRowIndex, 1);
+            vs.setPatientBloodPressure(Integer.parseInt(txtBloodPressure.getText()));
+            vs.setPatientBodyTemperature(Integer.parseInt(txtBodyTemperature.getText()));
+            vs.setPatientPulseRate(Integer.parseInt(txtPulseRate.getText()));
+            vs.setPatientRespirationRate(Integer.parseInt(txtRespirationRate.getText()));
+            JOptionPane.showMessageDialog(this, "Vital Signs Updated!");
+            clearFormText();
+            populateTable(d, vitalSignsDirectory);
+        }
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void tblEncountersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblEncountersMouseClicked
@@ -257,7 +266,46 @@ public class updateVitalSigns extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtRespirationRateActionPerformed
 
-    
+    private String validationCheck()
+    {
+        if(txtRespirationRate.getText().isEmpty() || txtPulseRate.getText().isEmpty() || txtBloodPressure.getText().isEmpty() || txtBodyTemperature.getText().isEmpty())
+        {
+            return "Please fill all fields!";
+        }
+        try
+        {
+            int respirationRate = Integer.parseInt(txtRespirationRate.getText());
+        }
+        catch(NumberFormatException ex)
+        {
+            return "Respiration Rate has to be a Number!";
+        }
+        try
+        {
+            int pulseRate = Integer.parseInt(txtPulseRate.getText());
+        }
+        catch(NumberFormatException ex)
+        {
+            return "Pulse Rate has to be a Number!";
+        }
+        try
+        {
+            int bloodPressure = Integer.parseInt(txtBloodPressure.getText());
+        }
+        catch(NumberFormatException ex)
+        {
+            return "Blood Pressure has to be a Number!";
+        }
+        try
+        {
+            int bodyTemp = Integer.parseInt(txtBodyTemperature.getText());
+        }
+        catch(NumberFormatException ex)
+        {
+            return "Body Temperature Rate has to be a Number!";
+        }
+        return "";
+    }
     private void clearFormText()
     {
         txtUID.setText("");

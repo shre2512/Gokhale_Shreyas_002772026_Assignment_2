@@ -177,8 +177,8 @@ public class updateDoctorEncounters extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(updateEncounters, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(78, 78, 78)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(48, 48, 48)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblEncounterID, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtUID, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -198,17 +198,25 @@ public class updateDoctorEncounters extends javax.swing.JPanel {
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
-        int selectedRowIndex = tblEncounters.getSelectedRow();
-        if(selectedRowIndex < 0)
+        
+        String validate = validationCheck();
+        if(!validate.isEmpty())
         {
-            JOptionPane.showMessageDialog(this, "Please Select a row to update");
+            JOptionPane.showMessageDialog(this, validate);
         }
-        DefaultTableModel model = (DefaultTableModel) tblEncounters.getModel();
-        Encounter selectedEncounter = (Encounter) model.getValueAt(selectedRowIndex, 2);
-        updateDetails(selectedEncounter);
-        clearFormText();
-        populateTable(d, ed);
-      
+        else
+        {
+            int selectedRowIndex = tblEncounters.getSelectedRow();
+            if(selectedRowIndex < 0)
+            {
+                JOptionPane.showMessageDialog(this, "Please Select a row to update");
+            }
+            DefaultTableModel model = (DefaultTableModel) tblEncounters.getModel();
+            Encounter selectedEncounter = (Encounter) model.getValueAt(selectedRowIndex, 2);
+            updateDetails(selectedEncounter);
+            clearFormText();
+            populateTable(d, ed);
+        }
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void tblEncountersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblEncountersMouseClicked
@@ -233,6 +241,15 @@ public class updateDoctorEncounters extends javax.swing.JPanel {
         txtUID.setText("");
         txtEncounterDate.setText("");
         txtEncounterSymptoms.setText("");
+    }
+    
+    private String validationCheck()
+    {
+        if(txtEncounterSymptoms.getText().isEmpty() || txtEncounterDate.getText().isEmpty())
+        {
+            return "Please fill all fields!";
+        }
+        return "";
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

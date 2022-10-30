@@ -32,7 +32,7 @@ public class patientJPanel extends javax.swing.JPanel {
     HospitalDirectory hospitalDirectory;
     EncounterDirectory encounterDirectory;
     
-    public patientJPanel(Patient p, PersonDirectory personDirectory, CityDirectory cityDirectory, CommunityDirectory communityDirectory, DoctorDirectory doctorDirectory, HospitalDirectory hospitalDirectory, EncounterDirectory encounterDirectory) throws IOException {
+    public patientJPanel(Patient p, PersonDirectory personDirectory, CityDirectory cityDirectory, CommunityDirectory communityDirectory, DoctorDirectory doctorDirectory, HospitalDirectory hospitalDirectory, EncounterDirectory encounterDirectory) throws Exception {
         initComponents(); 
         this.p = p;
         this.personDirectory = personDirectory;

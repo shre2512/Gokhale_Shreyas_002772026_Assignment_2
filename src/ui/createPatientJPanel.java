@@ -291,22 +291,31 @@ public class createPatientJPanel extends javax.swing.JPanel {
 
     private void btnCreatePatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreatePatientActionPerformed
         // TODO add your handling code here:
-        Patient p = patientDirectory.addNewPatient(Integer.parseInt(txtUID.getText()), txtUserName.getText(), txtPassWord.getText());
-        p.setName(tblViewPerson.getValueAt(tblViewPerson.getSelectedRow(), 0).toString());
-        p.setGender(tblViewPerson.getValueAt(tblViewPerson.getSelectedRow(), 1).toString());
-        p.setEmailId(tblViewPerson.getValueAt(tblViewPerson.getSelectedRow(), 2).toString());
-        p.setAge(Integer.parseInt(tblViewPerson.getValueAt(tblViewPerson.getSelectedRow(), 3).toString()));
-        p.setPhoneNumber(tblViewPerson.getValueAt(tblViewPerson.getSelectedRow(), 4).toString());
-        p.setHouseAddress(tblViewPerson.getValueAt(tblViewPerson.getSelectedRow(), 5).toString());
-        p.setCommunityName(tblViewPerson.getValueAt(tblViewPerson.getSelectedRow(), 6).toString());
-        p.setCityName(tblViewPerson.getValueAt(tblViewPerson.getSelectedRow(), 7).toString());
-        p.setPatientBloodGroup(selectBloodGroup.getSelectedItem().toString());
-        p.setPatientWeight(Integer.parseInt(txtBodyWeight.getText()));
-        
-        JOptionPane.showMessageDialog(this, "Patient Created!");
-        txtUserName.setText("");
-        txtPassWord.setText("");
-        txtBodyWeight.setText("");
+        String validate = validationCheck();
+        if(!validate.isEmpty())
+        {
+            JOptionPane.showMessageDialog(this, validate);
+        }
+        else
+        {
+            Patient p = patientDirectory.addNewPatient(Integer.parseInt(txtUID.getText()), txtUserName.getText(), txtPassWord.getText());
+            p.setName(tblViewPerson.getValueAt(tblViewPerson.getSelectedRow(), 0).toString());
+            p.setGender(tblViewPerson.getValueAt(tblViewPerson.getSelectedRow(), 1).toString());
+            p.setEmailId(tblViewPerson.getValueAt(tblViewPerson.getSelectedRow(), 2).toString());
+            p.setAge(Integer.parseInt(tblViewPerson.getValueAt(tblViewPerson.getSelectedRow(), 3).toString()));
+            p.setPhoneNumber(tblViewPerson.getValueAt(tblViewPerson.getSelectedRow(), 4).toString());
+            p.setHouseAddress(tblViewPerson.getValueAt(tblViewPerson.getSelectedRow(), 5).toString());
+            p.setCommunityName(tblViewPerson.getValueAt(tblViewPerson.getSelectedRow(), 6).toString());
+            p.setCityName(tblViewPerson.getValueAt(tblViewPerson.getSelectedRow(), 7).toString());
+            p.setPatientBloodGroup(selectBloodGroup.getSelectedItem().toString());
+            p.setPatientWeight(Integer.parseInt(txtBodyWeight.getText()));
+
+            JOptionPane.showMessageDialog(this, "Patient Created!");
+            txtUID.setText("");
+            txtUserName.setText("");
+            txtPassWord.setText("");
+            txtBodyWeight.setText("");
+        }
     }//GEN-LAST:event_btnCreatePatientActionPerformed
 
     private void tblViewPersonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblViewPersonMouseClicked
@@ -362,6 +371,24 @@ public class createPatientJPanel extends javax.swing.JPanel {
                 model.addRow(row);
             }
         }
+    }
+    
+    private String validationCheck()
+    {
+        if(txtUserName.getText().isEmpty() || txtPassWord.getText().isEmpty() || txtBodyWeight.getText().isEmpty())
+        {
+            return "Please fill all fields!";
+        }
+        
+        try
+        {
+            int bodyWeight = Integer.parseInt(txtBodyWeight.getText());
+        }
+        catch(NumberFormatException ex)
+        {
+            return "Body Weight has to be a Number!";
+        }
+        return "";
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

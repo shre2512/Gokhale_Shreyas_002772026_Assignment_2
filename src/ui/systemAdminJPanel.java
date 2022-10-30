@@ -4,12 +4,6 @@
  */
 package ui;
 
-import java.awt.Image;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.net.URL;
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 import model.CityDirectory;
 import model.CommunityDirectory;
 import model.DoctorDirectory;
@@ -39,12 +33,8 @@ public class systemAdminJPanel extends javax.swing.JPanel {
     EncounterDirectory ecounterDirectory;
     
     public systemAdminJPanel(CityDirectory cityDirectory, CommunityDirectory communityDirectory, HospitalDirectory hospitalDirectory, HouseDirectory houseDirectory, PatientDirectory patientDirectory,
-    PersonDirectory personDirectory, DoctorDirectory doctorDirectory, EncounterDirectory ecounterDirectory) throws IOException {
+    PersonDirectory personDirectory, DoctorDirectory doctorDirectory, EncounterDirectory ecounterDirectory) throws Exception {
         initComponents();
-        URL urlInput = new URL("https://i.postimg.cc/vmq8jXq9/city.jpg");
-        BufferedImage image = ImageIO.read(urlInput);
-        Image resultingImage = image.getScaledInstance(807, 388, Image.SCALE_DEFAULT);
-        jLabel1.setIcon(new ImageIcon(resultingImage));
         this.cityDirectory = cityDirectory;
         this.communityDirectory = communityDirectory;
         this.hospitalDirectory = hospitalDirectory;
@@ -73,7 +63,6 @@ public class systemAdminJPanel extends javax.swing.JPanel {
         btnCreateCity = new javax.swing.JButton();
         btnViewCity = new javax.swing.JButton();
         cityWorkArea = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         manageCommunities = new javax.swing.JPanel();
         communitySplitPane = new javax.swing.JSplitPane();
         communityControlArea = new javax.swing.JPanel();
@@ -201,17 +190,11 @@ public class systemAdminJPanel extends javax.swing.JPanel {
         cityWorkArea.setLayout(cityWorkAreaLayout);
         cityWorkAreaLayout.setHorizontalGroup(
             cityWorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(cityWorkAreaLayout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 807, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(112, Short.MAX_VALUE))
+            .addGap(0, 952, Short.MAX_VALUE)
         );
         cityWorkAreaLayout.setVerticalGroup(
             cityWorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(cityWorkAreaLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(69, Short.MAX_VALUE))
+            .addGap(0, 472, Short.MAX_VALUE)
         );
 
         citySplitPane.setRightComponent(cityWorkArea);
@@ -1016,7 +999,6 @@ public class systemAdminJPanel extends javax.swing.JPanel {
     private javax.swing.JPanel houseControlArea;
     private javax.swing.JSplitPane houseSplitPane;
     private javax.swing.JPanel houseWorkArea;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblPatientsDoctors;
     private javax.swing.JLabel lblSystemAdmin;
     private javax.swing.JPanel manageCities;

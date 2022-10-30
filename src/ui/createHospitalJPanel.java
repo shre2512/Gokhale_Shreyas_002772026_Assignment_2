@@ -176,27 +176,34 @@ public class createHospitalJPanel extends javax.swing.JPanel {
 
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
         // TODO add your handling code here:
-
-        Hospital newHospital = hospitalDirectory.addNewHospital();
-        String selectedCity = selectCityCombo.getSelectedItem().toString();
-        String selectedCommunity = selectCommunityCombo.getSelectedItem().toString();
-        
-        newHospital.setHospitalCity(selectedCity);
-        newHospital.setHospitalCommunity(selectedCommunity);
-        newHospital.setHospitalName(txtHospitalName.getText());
-        newHospital.setHospitalZip(txtHospitalZipcode.getText());
-        
-        for(Community cm:communityDirectory.getCommunityDirectory())
+        String validate = validationCheck();
+        if(!validate.isEmpty())
         {
-            if(cm.getCommunityName().equals(selectedCommunity))
-            {
-                cm.getCommunityHospitals().add(newHospital);
-            }
+            JOptionPane.showMessageDialog(this, validate);
         }
+        else
+        {
+            Hospital newHospital = hospitalDirectory.addNewHospital();
+            String selectedCity = selectCityCombo.getSelectedItem().toString();
+            String selectedCommunity = selectCommunityCombo.getSelectedItem().toString();
 
-        JOptionPane.showMessageDialog(this, "Hospital Added!");
-        txtHospitalName.setText("");
-        txtHospitalZipcode.setText("");
+            newHospital.setHospitalCity(selectedCity);
+            newHospital.setHospitalCommunity(selectedCommunity);
+            newHospital.setHospitalName(txtHospitalName.getText());
+            newHospital.setHospitalZip(txtHospitalZipcode.getText());
+
+            for(Community cm:communityDirectory.getCommunityDirectory())
+            {
+                if(cm.getCommunityName().equals(selectedCommunity))
+                {
+                    cm.getCommunityHospitals().add(newHospital);
+                }
+            }
+
+            JOptionPane.showMessageDialog(this, "Hospital Added!");
+            txtHospitalName.setText("");
+            txtHospitalZipcode.setText("");
+        }
     }//GEN-LAST:event_submitButtonActionPerformed
     
     private void populateCityComboBox(CityDirectory cityDirectory)
@@ -217,6 +224,15 @@ public class createHospitalJPanel extends javax.swing.JPanel {
                 selectCommunityCombo.addItem(cm.getCommunityName());
             }
         }
+    }
+    
+    private String validationCheck()
+    {
+        if(txtHospitalName.getText().isEmpty() || txtHospitalZipcode.getText().isEmpty())
+        {
+            return "Please fill all fields!";
+        }
+        return "";
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

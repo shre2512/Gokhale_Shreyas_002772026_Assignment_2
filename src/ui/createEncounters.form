@@ -33,10 +33,9 @@
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="300" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <EmptySpace min="-2" pref="303" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="1" attributes="0">
                                           <Component id="lblSelectHospital" min="-2" max="-2" attributes="0"/>
                                           <Component id="lblPatientID" min="-2" max="-2" attributes="0"/>
@@ -45,28 +44,32 @@
                                       <Group type="103" groupAlignment="1" attributes="0">
                                           <Group type="103" alignment="1" groupAlignment="0" attributes="0">
                                               <Component id="hospitalComboBox" alignment="1" min="-2" pref="215" max="-2" attributes="0"/>
-                                              <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                                  <Component id="txtSymptoms" max="32767" attributes="0"/>
-                                                  <Component id="doctorComboBox" alignment="0" min="-2" pref="215" max="-2" attributes="0"/>
-                                              </Group>
+                                              <Component id="doctorComboBox" alignment="0" min="-2" pref="215" max="-2" attributes="0"/>
                                           </Group>
                                           <Component id="txtUID" min="-2" pref="215" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="lblDate" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblSymptoms" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblSelectDoctor" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="txtDate" min="-2" pref="215" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                                      <Component id="lblSelectDoctor" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="385" max="-2" attributes="0"/>
                               <Component id="btnCreateEncounter" min="-2" pref="135" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="150" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="lblSymptoms" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblDate" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="txtSymptoms" min="-2" pref="215" max="-2" attributes="0"/>
+                                  <Component id="txtDate" min="-2" pref="215" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>

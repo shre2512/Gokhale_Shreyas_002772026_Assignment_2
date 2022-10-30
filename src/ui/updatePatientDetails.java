@@ -239,10 +239,18 @@ public class updatePatientDetails extends javax.swing.JPanel {
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
         // TODO add your handling code here:
-        updatePatientDetails(p);
-        updatePersonDetails(p, personDirectory);
-        resetTextFields();
-        JOptionPane.showMessageDialog(this, "Details Updated Successfully!");
+        String validate = validationCheck();
+        if(!validate.isEmpty())
+        {
+            JOptionPane.showMessageDialog(this, validate);
+        }
+        else
+        {
+            updatePatientDetails(p);
+            updatePersonDetails(p, personDirectory);
+            resetTextFields();
+            JOptionPane.showMessageDialog(this, "Details Updated Successfully!");
+        }
     }//GEN-LAST:event_btnSubmitActionPerformed
     
     private void updatePatientDetails(Patient p)
@@ -278,6 +286,31 @@ public class updatePatientDetails extends javax.swing.JPanel {
         txtName.setText("");
         txtPhone.setText("");
         txtWeight.setText("");
+    }
+    
+    private String validationCheck()
+    {
+        if(txtName.getText().isEmpty() || txtGender.getText().isEmpty() || txtEmailId.getText().isEmpty() || txtPhone.getText().isEmpty() || txtAge.getText().isEmpty() || txtWeight.getText().isEmpty())
+        {
+            return "Please fill all fields!";
+        }
+        try
+        {
+            int age = Integer.parseInt(txtAge.getText());
+        }
+        catch(NumberFormatException ex)
+        {
+            return "Age has to be a Number!";
+        }
+        try
+        {
+            int bodyWeight = Integer.parseInt(txtWeight.getText());
+        }
+        catch(NumberFormatException ex)
+        {
+            return "Body Weight has to be a Number!";
+        }
+        return "";
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

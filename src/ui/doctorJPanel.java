@@ -27,7 +27,7 @@ public class doctorJPanel extends javax.swing.JPanel {
     PatientDirectory patientDirectory;
     VitalSignsDirectory vitalSignsDirectory;
     
-    public doctorJPanel(Doctor d, EncounterDirectory ed, PatientDirectory patientDirectory, VitalSignsDirectory vitalSignsDirectory) throws IOException {
+    public doctorJPanel(Doctor d, EncounterDirectory ed, PatientDirectory patientDirectory, VitalSignsDirectory vitalSignsDirectory) throws Exception {
         initComponents();
         this.patientDirectory = patientDirectory;
         this.ed = ed;
@@ -148,6 +148,11 @@ public class doctorJPanel extends javax.swing.JPanel {
 
         btnUpdateVitalSigns.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnUpdateVitalSigns.setText("Update");
+        btnUpdateVitalSigns.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateVitalSignsActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout vitalSignsControlAreaLayout = new javax.swing.GroupLayout(vitalSignsControlArea);
         vitalSignsControlArea.setLayout(vitalSignsControlAreaLayout);
@@ -245,6 +250,12 @@ public class doctorJPanel extends javax.swing.JPanel {
         updateDoctorEncounters updateEncounters = new updateDoctorEncounters(d, ed, patientDirectory);
         encountersSplitPane.setRightComponent(updateEncounters);
     }//GEN-LAST:event_btnUpdateEncounterActionPerformed
+
+    private void btnUpdateVitalSignsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateVitalSignsActionPerformed
+        // TODO add your handling code here:
+        updateVitalSigns updateSigns = new updateVitalSigns(d, ed, patientDirectory, vitalSignsDirectory);
+        vitalSignSplitPane.setRightComponent(updateSigns);
+    }//GEN-LAST:event_btnUpdateVitalSignsActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

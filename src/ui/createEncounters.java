@@ -159,10 +159,9 @@ public class createEncounters extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(300, 300, 300)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGap(303, 303, 303)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(3, 3, 3)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addComponent(lblSelectHospital)
                                             .addComponent(lblPatientID))
@@ -170,20 +169,23 @@ public class createEncounters extends javax.swing.JPanel {
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                 .addComponent(hospitalComboBox, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                    .addComponent(txtSymptoms, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                    .addComponent(doctorComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addComponent(doctorComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addComponent(txtUID, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(lblDate)
-                                            .addComponent(lblSymptoms)
-                                            .addComponent(lblSelectDoctor))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(txtDate, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addGap(8, 8, 8)
+                                        .addComponent(lblSelectDoctor))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(385, 385, 385)
-                                .addComponent(btnCreateEncounter, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(btnCreateEncounter, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(150, 150, 150)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblSymptoms)
+                                    .addComponent(lblDate))
+                                .addGap(100, 100, 100)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txtSymptoms, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtDate, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -244,24 +246,32 @@ public class createEncounters extends javax.swing.JPanel {
 
     private void btnCreateEncounterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateEncounterActionPerformed
         // TODO add your handling code here:
-        
-        Encounter e = ecounterDirectory.addNewEncounter(Integer.parseInt(txtUID.getText()));
-        
-        e.setHospitalName(hospitalComboBox.getSelectedItem().toString());
-        e.setDoctorName(doctorComboBox.getSelectedItem().toString());
-        e.setEncounterSymptoms(txtSymptoms.getText());
-        e.setEncounterDate(txtDate.getText());
-
-        for(Patient p:patientDirectory.getPatientDirectory())
+        String validate = validationCheck();
+        if(!validate.isEmpty())
         {
-            if(p.getPatientId() == Integer.parseInt(txtUID.getText()))
-            {
-                p.getPatientEncounters().add(e);
-            }
+            JOptionPane.showMessageDialog(this, validate);
         }
-        JOptionPane.showMessageDialog(this, "Encounter Created!");
-        txtSymptoms.setText("");
-        txtDate.setText("");
+        else
+        {
+            Encounter e = ecounterDirectory.addNewEncounter(Integer.parseInt(txtUID.getText()));
+
+            e.setHospitalName(hospitalComboBox.getSelectedItem().toString());
+            e.setDoctorName(doctorComboBox.getSelectedItem().toString());
+            e.setEncounterSymptoms(txtSymptoms.getText());
+            e.setEncounterDate(txtDate.getText());
+
+            for(Patient p:patientDirectory.getPatientDirectory())
+            {
+                if(p.getPatientId() == Integer.parseInt(txtUID.getText()))
+                {
+                    p.getPatientEncounters().add(e);
+                }
+            }
+            JOptionPane.showMessageDialog(this, "Encounter Created!");
+            txtUID.setText("");
+            txtSymptoms.setText("");
+            txtDate.setText("");
+        }
     }//GEN-LAST:event_btnCreateEncounterActionPerformed
 
     private void tablePatientsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablePatientsMouseClicked
@@ -310,6 +320,15 @@ public class createEncounters extends javax.swing.JPanel {
                 }
             }
         }
+    }
+    
+    private String validationCheck()
+    {
+        if(txtSymptoms.getText().isEmpty() || txtDate.getText().isEmpty())
+        {
+            return "Please fill all fields!";
+        }
+        return "";
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -121,12 +121,21 @@ public class createCityJPanel extends javax.swing.JPanel {
 
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
         // TODO add your handling code here:
-        City newCity = cityDirectory.addNewCity();
-        newCity.setCityName(txtCityName.getText());
-        newCity.setStateName(txtStateName.getText());
-        JOptionPane.showMessageDialog(this, "City Added!");
-        txtCityName.setText("");
-        txtStateName.setText("");
+        String validate = validationCheck();
+        if(!validate.isEmpty())
+        {
+            JOptionPane.showMessageDialog(this, validate);
+        }
+        else
+        {
+            City newCity = cityDirectory.addNewCity();
+            newCity.setCityName(txtCityName.getText());
+            newCity.setStateName(txtStateName.getText());
+            JOptionPane.showMessageDialog(this, "City Added!");
+            txtCityName.setText("");
+            txtStateName.setText("");
+        }
+
     }//GEN-LAST:event_submitButtonActionPerformed
 
     private void txtCityNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCityNameActionPerformed
@@ -136,7 +145,15 @@ public class createCityJPanel extends javax.swing.JPanel {
     private void txtStateNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtStateNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtStateNameActionPerformed
-
+    
+    private String validationCheck()
+    {
+        if(txtCityName.getText().isEmpty() || txtStateName.getText().isEmpty())
+        {
+            return "Please fill all fields!";
+        }
+        return "";
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel lblCityName;
