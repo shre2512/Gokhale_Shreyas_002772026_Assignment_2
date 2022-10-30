@@ -14,6 +14,33 @@ public class VitalSigns {
     private int patientPulseRate;
     private int patientRespirationRate;
     private int patientBloodPressure;
+    private int doctorID;
+    private int encounterID;
+    private String encounterDate;
+
+    public int getEncounterID() {
+        return encounterID;
+    }
+
+    public void setEncounterID(int encounterID) {
+        this.encounterID = encounterID;
+    }
+
+    public String getEncounterDate() {
+        return encounterDate;
+    }
+
+    public void setEncounterDate(String encounterDate) {
+        this.encounterDate = encounterDate;
+    }
+
+    public int getDoctorID() {
+        return doctorID;
+    }
+
+    public void setDoctorID(int doctorID) {
+        this.doctorID = doctorID;
+    }
 
     public int getPatientBodyTemperature() {
         return patientBodyTemperature;
@@ -47,4 +74,9 @@ public class VitalSigns {
         this.patientBloodPressure = patientBloodPressure;
     }
     
+    @Override
+    public String toString()
+    {
+        return this.encounterDate;
+    }
 }

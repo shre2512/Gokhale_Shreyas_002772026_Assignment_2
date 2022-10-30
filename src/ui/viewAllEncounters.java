@@ -7,6 +7,8 @@ package ui;
 import javax.swing.table.DefaultTableModel;
 import model.Encounter;
 import model.EncounterDirectory;
+import model.Patient;
+import model.PatientDirectory;
 
 /**
  *
@@ -18,9 +20,11 @@ public class viewAllEncounters extends javax.swing.JPanel {
      * Creates new form viewAllEncounters
      */
     EncounterDirectory ecounterDirectory;
+    PatientDirectory patientDirectory;
     
-    public viewAllEncounters(EncounterDirectory ecounterDirectory) {
+    public viewAllEncounters(EncounterDirectory ecounterDirectory, PatientDirectory patientDirectory) {
         initComponents();
+        this.patientDirectory = patientDirectory;
         this.ecounterDirectory = ecounterDirectory;
         populateTable(ecounterDirectory);
     }
@@ -53,7 +57,7 @@ public class viewAllEncounters extends javax.swing.JPanel {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Patient ID", "Encounter Date", "Doctor Name", "Hospital Name", "Symptoms"
+                "Patient Name", "Encounter Date", "Doctor Name", "Hospital Name", "Symptoms"
             }
         ));
         tblEncounters.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
@@ -89,13 +93,25 @@ public class viewAllEncounters extends javax.swing.JPanel {
         for(Encounter e:ecounterDirectory.getEncounterDirectory())
         {
             Object[] row = new Object[5];
-            row[0] = e.getPatientID();
-            row[1] = e.getEncounterDate();
+            row[0] = name(e);
+            row[1] = e;
             row[2] = e.getDoctorName();
             row[3] = e.getHospitalName();
             row[4] = e.getEncounterSymptoms();
             model.addRow(row);
         }
+    }
+    
+    private String name(Encounter e)
+    {
+        for(Patient p:patientDirectory.getPatientDirectory())
+        {
+            if(p.getPatientId() == e.getPatientID())
+            {
+                return p.getName();
+            }
+        }
+        return "";
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

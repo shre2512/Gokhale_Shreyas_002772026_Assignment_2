@@ -260,6 +260,8 @@ public class createEncounters extends javax.swing.JPanel {
             }
         }
         JOptionPane.showMessageDialog(this, "Encounter Created!");
+        txtSymptoms.setText("");
+        txtDate.setText("");
     }//GEN-LAST:event_btnCreateEncounterActionPerformed
 
     private void tablePatientsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablePatientsMouseClicked

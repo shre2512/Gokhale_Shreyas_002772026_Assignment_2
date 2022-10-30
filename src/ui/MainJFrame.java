@@ -19,6 +19,7 @@ import model.HouseDirectory;
 import model.Patient;
 import model.PatientDirectory;
 import model.PersonDirectory;
+import model.VitalSignsDirectory;
 
 /**
  *
@@ -41,6 +42,7 @@ public class MainJFrame extends javax.swing.JFrame {
     CityDirectory cityDirectory;
     CommunityDirectory communityDirectory;
     DoctorDirectory doctorDirectory;
+    VitalSignsDirectory vitalSignsDirectory;
     
     public MainJFrame() {
         initComponents();
@@ -56,6 +58,7 @@ public class MainJFrame extends javax.swing.JFrame {
         communityDirectory = new CommunityDirectory();
         cityDirectory = new CityDirectory();
         doctorDirectory = new DoctorDirectory();
+        vitalSignsDirectory = new VitalSignsDirectory();
     }
 
     /**
@@ -286,7 +289,7 @@ public class MainJFrame extends javax.swing.JFrame {
             {
                 try {
                     JOptionPane.showMessageDialog(this, "Logged In As Doctor");
-                    doctorJPanel doctor = new doctorJPanel(dInitial);
+                    doctorJPanel doctor = new doctorJPanel(dInitial, encounterDirectory, patientDirectory, vitalSignsDirectory);
                     splitPane.setRightComponent(doctor);
                     buttonLogOut.setVisible(true);
                 } catch (IOException ex) {

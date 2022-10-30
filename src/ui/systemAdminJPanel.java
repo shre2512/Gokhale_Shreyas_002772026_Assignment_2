@@ -919,7 +919,7 @@ public class systemAdminJPanel extends javax.swing.JPanel {
 
     private void btnViewEncounterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewEncounterActionPerformed
         // TODO add your handling code here:
-        viewAllEncounters encounters = new viewAllEncounters(ecounterDirectory);
+        viewAllEncounters encounters = new viewAllEncounters(ecounterDirectory, patientDirectory);
         encounterSplitPane.setRightComponent(encounters);
     }//GEN-LAST:event_btnViewEncounterActionPerformed
 

@@ -6,13 +6,11 @@ package ui;
 
 import java.io.IOException;
 
-import model.CityDirectory;
-import model.CommunityDirectory;
+
 import model.Doctor;
-import model.DoctorDirectory;
-import model.HospitalDirectory;
-import model.Patient;
-import model.PersonDirectory;
+import model.EncounterDirectory;
+import model.PatientDirectory;
+import model.VitalSignsDirectory;
 
 /**
  *
@@ -25,10 +23,16 @@ public class doctorJPanel extends javax.swing.JPanel {
      * Creates new form CommunityAdmin
      */
     Doctor d;
+    EncounterDirectory ed;
+    PatientDirectory patientDirectory;
+    VitalSignsDirectory vitalSignsDirectory;
     
-    public doctorJPanel(Doctor d) throws IOException {
-        initComponents(); 
+    public doctorJPanel(Doctor d, EncounterDirectory ed, PatientDirectory patientDirectory, VitalSignsDirectory vitalSignsDirectory) throws IOException {
+        initComponents();
+        this.patientDirectory = patientDirectory;
+        this.ed = ed;
         this.d = d;
+        this.vitalSignsDirectory = vitalSignsDirectory;
     }
 
     /**
@@ -44,7 +48,6 @@ public class doctorJPanel extends javax.swing.JPanel {
         doctorEncounters = new javax.swing.JPanel();
         encountersSplitPane = new javax.swing.JSplitPane();
         encountersControlArea = new javax.swing.JPanel();
-        btnCreateEncounter = new javax.swing.JButton();
         btnViewEncounter = new javax.swing.JButton();
         btnUpdateEncounter = new javax.swing.JButton();
         encountersWorkArea = new javax.swing.JPanel();
@@ -66,14 +69,6 @@ public class doctorJPanel extends javax.swing.JPanel {
 
         encountersControlArea.setBackground(new java.awt.Color(102, 255, 102));
 
-        btnCreateEncounter.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnCreateEncounter.setText("Create");
-        btnCreateEncounter.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCreateEncounterActionPerformed(evt);
-            }
-        });
-
         btnViewEncounter.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnViewEncounter.setText("View");
         btnViewEncounter.addActionListener(new java.awt.event.ActionListener() {
@@ -84,6 +79,11 @@ public class doctorJPanel extends javax.swing.JPanel {
 
         btnUpdateEncounter.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnUpdateEncounter.setText("Update");
+        btnUpdateEncounter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateEncounterActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout encountersControlAreaLayout = new javax.swing.GroupLayout(encountersControlArea);
         encountersControlArea.setLayout(encountersControlAreaLayout);
@@ -93,16 +93,13 @@ public class doctorJPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(encountersControlAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnUpdateEncounter, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
-                    .addComponent(btnCreateEncounter, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
                     .addComponent(btnViewEncounter, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE))
                 .addContainerGap())
         );
         encountersControlAreaLayout.setVerticalGroup(
             encountersControlAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(encountersControlAreaLayout.createSequentialGroup()
-                .addGap(94, 94, 94)
-                .addComponent(btnCreateEncounter, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(155, 155, 155)
                 .addComponent(btnViewEncounter, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnUpdateEncounter, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -233,19 +230,24 @@ public class doctorJPanel extends javax.swing.JPanel {
 
     private void btnViewEncounterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewEncounterActionPerformed
         // TODO add your handling code here:
+        viewDoctorEncounters viewEncounters = new viewDoctorEncounters(d, ed, patientDirectory);
+        encountersSplitPane.setRightComponent(viewEncounters);
     }//GEN-LAST:event_btnViewEncounterActionPerformed
-
-    private void btnCreateEncounterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateEncounterActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnCreateEncounterActionPerformed
 
     private void btnCreateVitalSignsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateVitalSignsActionPerformed
         // TODO add your handling code here:
+        createVitalSigns createVitals = new createVitalSigns(d, ed, patientDirectory, vitalSignsDirectory);
+        vitalSignSplitPane.setRightComponent(createVitals);
     }//GEN-LAST:event_btnCreateVitalSignsActionPerformed
+
+    private void btnUpdateEncounterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateEncounterActionPerformed
+        // TODO add your handling code here:
+        updateDoctorEncounters updateEncounters = new updateDoctorEncounters(d, ed, patientDirectory);
+        encountersSplitPane.setRightComponent(updateEncounters);
+    }//GEN-LAST:event_btnUpdateEncounterActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCreateEncounter;
     private javax.swing.JButton btnCreateVitalSigns;
     private javax.swing.JButton btnUpdateEncounter;
     private javax.swing.JButton btnUpdateVitalSigns;

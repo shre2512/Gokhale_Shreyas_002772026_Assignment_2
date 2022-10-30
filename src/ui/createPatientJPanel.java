@@ -304,6 +304,9 @@ public class createPatientJPanel extends javax.swing.JPanel {
         p.setPatientWeight(Integer.parseInt(txtBodyWeight.getText()));
         
         JOptionPane.showMessageDialog(this, "Patient Created!");
+        txtUserName.setText("");
+        txtPassWord.setText("");
+        txtBodyWeight.setText("");
     }//GEN-LAST:event_btnCreatePatientActionPerformed
 
     private void tblViewPersonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblViewPersonMouseClicked

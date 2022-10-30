@@ -6,7 +6,6 @@ package ui;
 
 import javax.swing.table.DefaultTableModel;
 import model.Encounter;
-import model.EncounterDirectory;
 import model.Patient;
 
 /**
@@ -90,7 +89,7 @@ public class viewPersonalEncounters extends javax.swing.JPanel {
         for(Encounter e:p.getPatientEncounters())
         {
             Object[] row = new Object[4];
-            row[0] = e.getEncounterDate();
+            row[0] = e;
             row[1] = e.getDoctorName();
             row[2] = e.getHospitalName();
             row[3] = e.getEncounterSymptoms();

@@ -12,6 +12,9 @@ import java.util.ArrayList;
  */
 public class Encounter {
     
+    private static int count = 0;
+    private final int encounterID;
+    
     private String hospitalName;
     private String doctorName;
     private String encounterDate;
@@ -21,8 +24,13 @@ public class Encounter {
     
     public Encounter(int patientID)
     {
+        this.encounterID = ++count;
         this.patientID = patientID;
         this.encounterVitalSigns = new ArrayList<>();
+    }
+
+    public int getEncounterID() {
+        return encounterID;
     }
 
     public int getPatientID() {
@@ -64,4 +72,11 @@ public class Encounter {
     public void setEncounterSymptoms(String encounterSymptoms) {
         this.encounterSymptoms = encounterSymptoms;
     }
+    
+    @Override
+    public String toString()
+    {
+        return this.encounterDate;
+    }
+    
 }

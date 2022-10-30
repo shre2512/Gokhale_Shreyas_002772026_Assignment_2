@@ -312,6 +312,9 @@ public class createDoctorJPanel extends javax.swing.JPanel {
             } 
         }
         JOptionPane.showMessageDialog(this, "Doctor Created!");
+        txtUserName.setText("");
+        txtPassWord.setText("");
+        txtDoctorSpecialization.setText("");
     }//GEN-LAST:event_btnCreateDoctorActionPerformed
 
     private void tblViewPersonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblViewPersonMouseClicked
