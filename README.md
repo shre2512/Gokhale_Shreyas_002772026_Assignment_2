@@ -10,7 +10,10 @@
 
 
 
+UML Sequence Diagram
 ![AED_Assignment2_Class_Diagram](https://user-images.githubusercontent.com/114827668/198927734-585d7775-bb08-4101-bc22-c8400dc7cded.jpg)
+
+
 
 
 
