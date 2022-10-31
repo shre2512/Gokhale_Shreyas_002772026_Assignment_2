@@ -131,6 +131,9 @@
                         </Property>
                         <Property name="text" type="java.lang.String" value="Update"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUpdateCityActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="btnCreateCity">
                       <Properties>
@@ -286,6 +289,9 @@
                         </Property>
                         <Property name="text" type="java.lang.String" value="Update"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUpdateCommunityActionPerformed"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -362,7 +368,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="btnUpdateHospital1" alignment="0" pref="88" max="32767" attributes="0"/>
+                                  <Component id="btnUpdateHouse" alignment="0" pref="88" max="32767" attributes="0"/>
                                   <Component id="btnCreateHouse" alignment="0" pref="88" max="32767" attributes="0"/>
                                   <Component id="btnViewHouse" alignment="0" pref="88" max="32767" attributes="0"/>
                               </Group>
@@ -378,7 +384,7 @@
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="btnViewHouse" min="-2" pref="43" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="btnUpdateHospital1" min="-2" pref="44" max="-2" attributes="0"/>
+                              <Component id="btnUpdateHouse" min="-2" pref="44" max="-2" attributes="0"/>
                               <EmptySpace pref="222" max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -407,13 +413,16 @@
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnViewHouseActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JButton" name="btnUpdateHospital1">
+                    <Component class="javax.swing.JButton" name="btnUpdateHouse">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="12" style="1"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Update"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUpdateHouseActionPerformed"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>

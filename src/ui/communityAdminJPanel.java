@@ -59,7 +59,7 @@ public class communityAdminJPanel extends javax.swing.JPanel {
         houseControlArea = new javax.swing.JPanel();
         btnCreateHouse = new javax.swing.JButton();
         btnViewHouse = new javax.swing.JButton();
-        btnUpdateHospital1 = new javax.swing.JButton();
+        btnUpdateHouse = new javax.swing.JButton();
         houseWorkArea = new javax.swing.JPanel();
         lblSystemAdmin = new javax.swing.JLabel();
 
@@ -75,6 +75,11 @@ public class communityAdminJPanel extends javax.swing.JPanel {
 
         btnUpdateCity.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnUpdateCity.setText("Update");
+        btnUpdateCity.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateCityActionPerformed(evt);
+            }
+        });
 
         btnCreateCity.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnCreateCity.setText("Create");
@@ -168,6 +173,11 @@ public class communityAdminJPanel extends javax.swing.JPanel {
 
         btnUpdateCommunity.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnUpdateCommunity.setText("Update");
+        btnUpdateCommunity.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateCommunityActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout communityControlAreaLayout = new javax.swing.GroupLayout(communityControlArea);
         communityControlArea.setLayout(communityControlAreaLayout);
@@ -241,8 +251,13 @@ public class communityAdminJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnUpdateHospital1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnUpdateHospital1.setText("Update");
+        btnUpdateHouse.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnUpdateHouse.setText("Update");
+        btnUpdateHouse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateHouseActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout houseControlAreaLayout = new javax.swing.GroupLayout(houseControlArea);
         houseControlArea.setLayout(houseControlAreaLayout);
@@ -251,7 +266,7 @@ public class communityAdminJPanel extends javax.swing.JPanel {
             .addGroup(houseControlAreaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(houseControlAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnUpdateHospital1, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
+                    .addComponent(btnUpdateHouse, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
                     .addComponent(btnCreateHouse, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
                     .addComponent(btnViewHouse, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE))
                 .addContainerGap())
@@ -264,7 +279,7 @@ public class communityAdminJPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(btnViewHouse, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnUpdateHospital1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnUpdateHouse, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(222, Short.MAX_VALUE))
         );
 
@@ -356,6 +371,24 @@ public class communityAdminJPanel extends javax.swing.JPanel {
         houseSplitPane.setRightComponent(viewHouse);
     }//GEN-LAST:event_btnViewHouseActionPerformed
 
+    private void btnUpdateCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateCityActionPerformed
+        // TODO add your handling code here:
+        updateCityJPanel updateCity = new updateCityJPanel(cityDirectory);
+        citySplitPane.setRightComponent(updateCity);
+    }//GEN-LAST:event_btnUpdateCityActionPerformed
+
+    private void btnUpdateCommunityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateCommunityActionPerformed
+        // TODO add your handling code here:
+        updateCommunityJPanel updateCommunity = new updateCommunityJPanel(communityDirectory);
+        communitySplitPane.setRightComponent(updateCommunity);
+    }//GEN-LAST:event_btnUpdateCommunityActionPerformed
+
+    private void btnUpdateHouseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateHouseActionPerformed
+        // TODO add your handling code here:
+        updateHouseJPanel updateHouse = new updateHouseJPanel(houseDirectory);
+        houseSplitPane.setRightComponent(updateHouse);
+    }//GEN-LAST:event_btnUpdateHouseActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCreateCity;
@@ -363,7 +396,7 @@ public class communityAdminJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnCreateHouse;
     private javax.swing.JButton btnUpdateCity;
     private javax.swing.JButton btnUpdateCommunity;
-    private javax.swing.JButton btnUpdateHospital1;
+    private javax.swing.JButton btnUpdateHouse;
     private javax.swing.JButton btnViewCity;
     private javax.swing.JButton btnViewCommunity;
     private javax.swing.JButton btnViewHouse;

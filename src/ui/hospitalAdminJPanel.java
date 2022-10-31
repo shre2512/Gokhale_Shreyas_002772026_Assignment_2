@@ -104,6 +104,11 @@ public class hospitalAdminJPanel extends javax.swing.JPanel {
 
         btnUpdateHospital.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnUpdateHospital.setText("Update");
+        btnUpdateHospital.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateHospitalActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout hospitalControlAreaLayout = new javax.swing.GroupLayout(hospitalControlArea);
         hospitalControlArea.setLayout(hospitalControlAreaLayout);
@@ -437,6 +442,12 @@ public class hospitalAdminJPanel extends javax.swing.JPanel {
         viewPatientJPanel viewPatient = new viewPatientJPanel(patientDirectory);
         patientsDoctorsSplitPane.setBottomComponent(viewPatient);
     }//GEN-LAST:event_btnViewPatientActionPerformed
+
+    private void btnUpdateHospitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateHospitalActionPerformed
+        // TODO add your handling code here:
+        updateHospitalJPanel updateHospital = new updateHospitalJPanel(hospitalDirectory);
+        hospitalSplitPane.setRightComponent(updateHospital);
+    }//GEN-LAST:event_btnUpdateHospitalActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
