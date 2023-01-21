@@ -1,3 +1,5 @@
+A Java Swing application for Hospital Management System
+
 ![UML_Class_Diagram_System_Admin](https://user-images.githubusercontent.com/114827668/198927684-7a697b0b-eb14-48fa-99df-57768871c171.jpg)
 
 
